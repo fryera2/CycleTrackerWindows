@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CycleDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bikes">
+          <Key>
+            <PropertyRef Name="BikeID" />
+          </Key>
+          <Property Name="BikeID" Type="int" Nullable="false" />
+          <Property Name="BikeName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Rides">
+          <Key>
+            <PropertyRef Name="RideID" />
+          </Key>
+          <Property Name="RideID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BikeID" Type="int" />
+          <Property Name="RideDate" Type="date" />
+          <Property Name="TimeInMinutes" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TimeInHours" Type="decimal" Precision="10" Scale="2" StoreGeneratedPattern="Computed" />
+          <Property Name="DistanceInMiles" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DistanceInKm" Type="decimal" Precision="10" Scale="2" StoreGeneratedPattern="Computed" />
+          <Property Name="Calories" Type="nchar" MaxLength="10" />
+          <Property Name="AverageSpeed" Type="decimal" Precision="10" Scale="2" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <Association Name="FK_Rides_Bikes1">
+          <End Role="Bikes" Type="Self.Bikes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rides" Type="Self.Rides" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bikes">
+              <PropertyRef Name="BikeID" />
+            </Principal>
+            <Dependent Role="Rides">
+              <PropertyRef Name="BikeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CycleDBModelStoreContainer">
+          <EntitySet Name="Bikes" EntityType="Self.Bikes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rides" EntityType="Self.Rides" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Rides_Bikes1" Association="Self.FK_Rides_Bikes1">
+            <End Role="Bikes" EntitySet="Bikes" />
+            <End Role="Rides" EntitySet="Rides" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CycleDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bike">
+          <Key>
+            <PropertyRef Name="BikeID" />
+          </Key>
+          <Property Name="BikeID" Type="Int32" Nullable="false" />
+          <Property Name="BikeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Rides" Relationship="Self.FK_Rides_Bikes1" FromRole="Bikes" ToRole="Rides" />
+        </EntityType>
+        <EntityType Name="Ride">
+          <Key>
+            <PropertyRef Name="RideID" />
+          </Key>
+          <Property Name="RideID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BikeID" Type="Int32" />
+          <Property Name="RideDate" Type="DateTime" Precision="0" />
+          <Property Name="TimeInMinutes" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TimeInHours" Type="Decimal" Precision="10" Scale="2" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="DistanceInMiles" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DistanceInKm" Type="Decimal" Precision="10" Scale="2" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Calories" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="AverageSpeed" Type="Decimal" Precision="10" Scale="2" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Bike" Relationship="Self.FK_Rides_Bikes1" FromRole="Rides" ToRole="Bikes" />
+        </EntityType>
+        <Association Name="FK_Rides_Bikes1">
+          <End Role="Bikes" Type="Self.Bike" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rides" Type="Self.Ride" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bikes">
+              <PropertyRef Name="BikeID" />
+            </Principal>
+            <Dependent Role="Rides">
+              <PropertyRef Name="BikeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CycleDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bikes" EntityType="Self.Bike" />
+          <EntitySet Name="Rides" EntityType="Self.Ride" />
+          <AssociationSet Name="FK_Rides_Bikes1" Association="Self.FK_Rides_Bikes1">
+            <End Role="Bikes" EntitySet="Bikes" />
+            <End Role="Rides" EntitySet="Rides" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CycleDBModelStoreContainer" CdmEntityContainer="CycleDBEntities">
+          <EntitySetMapping Name="Bikes">
+            <EntityTypeMapping TypeName="CycleDBModel.Bike">
+              <MappingFragment StoreEntitySet="Bikes">
+                <ScalarProperty Name="BikeID" ColumnName="BikeID" />
+                <ScalarProperty Name="BikeName" ColumnName="BikeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rides">
+            <EntityTypeMapping TypeName="CycleDBModel.Ride">
+              <MappingFragment StoreEntitySet="Rides">
+                <ScalarProperty Name="RideID" ColumnName="RideID" />
+                <ScalarProperty Name="BikeID" ColumnName="BikeID" />
+                <ScalarProperty Name="RideDate" ColumnName="RideDate" />
+                <ScalarProperty Name="TimeInMinutes" ColumnName="TimeInMinutes" />
+                <ScalarProperty Name="TimeInHours" ColumnName="TimeInHours" />
+                <ScalarProperty Name="DistanceInMiles" ColumnName="DistanceInMiles" />
+                <ScalarProperty Name="DistanceInKm" ColumnName="DistanceInKm" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+                <ScalarProperty Name="AverageSpeed" ColumnName="AverageSpeed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

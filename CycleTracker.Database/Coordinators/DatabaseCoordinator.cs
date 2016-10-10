@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CycleTracker.BusinessObjects
+namespace CycleTracker.Database
 {
-    public class Class1
+    public class DatabaseCoordinator
     {
     }
 }
