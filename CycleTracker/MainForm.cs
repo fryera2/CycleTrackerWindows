@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CycleTracker.BusinessObjects;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,9 @@ namespace CycleTracker
         public MainForm()
         {
             InitializeComponent();
+            ImportCoordinator Coordinator = new ImportCoordinator(@"C:\Users\Andrew\Documents\exercise.xlsx");
+
+            var results = Coordinator.GetWorkSheetList();
         }
     }
 }

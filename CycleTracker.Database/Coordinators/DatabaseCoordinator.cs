@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace CycleTracker.Database
 {
     public class DatabaseCoordinator
-    {
+    { 
+
     }
 }
