@@ -13,12 +13,35 @@ namespace CycleTracker
 {
     public partial class MainForm : Form
     {
+
+        private ImportCoordinator _coordinator = null;
+
+        ImportCoordinator Coordinator
+        {
+            get
+            {
+                if (_coordinator == null)
+                {
+                    _coordinator = new ImportCoordinator(@"C:\Users\Andrew\Documents\exercise.xlsx");
+                }
+                return _coordinator;
+            }
+        }
+        
         public MainForm()
         {
             InitializeComponent();
-            ImportCoordinator Coordinator = new ImportCoordinator(@"C:\Users\Andrew\Documents\exercise.xlsx");
+            ImportData();
 
-            var results = Coordinator.GetWorkSheetList();
+
+        }
+
+        private void ImportData ()
+        {
+            foreach (string worksheet in Coordinator.GetWorkSheetList())
+            {
+                Coordinator.ImportRecords(worksheet);
+            }
         }
     }
 }

@@ -9,16 +9,16 @@ namespace CycleTracker.BusinessObjects
 {
     public class ImportCoordinator : BaseCoordinator
     {
-        private ExcelCoordinator _spreadsheetCoordinator = null;
+        private ExcelImportCoordinator _spreadsheetCoordinator = null;
         private string _fileName;
 
-        private ExcelCoordinator SpreadsheetCoordinator
+        private ExcelImportCoordinator SpreadsheetCoordinator
         {
             get
             {
                 if (_spreadsheetCoordinator == null)
                 {
-                    _spreadsheetCoordinator = new ExcelCoordinator(_fileName);
+                    _spreadsheetCoordinator = new ExcelImportCoordinator(_fileName);
                 }
                 return _spreadsheetCoordinator;
             }
@@ -29,8 +29,9 @@ namespace CycleTracker.BusinessObjects
             _fileName = fileName;
         }
 
-        public void ImportRecords ()
+        public void ImportRecords (string worksheetName)
         {
+            SpreadsheetCoordinator.ImportRecords(worksheetName);
         }
 
         public List<string> GetWorkSheetList()

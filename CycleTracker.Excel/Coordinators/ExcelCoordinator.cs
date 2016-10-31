@@ -4,47 +4,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Office.Interop.Excel;
+using LinqToExcel;
+using log4net;
 
 namespace CycleTracker.Excel
 {
-    public class ExcelCoordinator : IDisposable
+    public class ExcelImportCoordinator : IDisposable
     {
-        private Workbook _excelWorkbook;
+        private ExcelQueryFactory _excelWorkbook;
         private Application _application = null;
-        private List<Worksheet> _worksheets = null;
 
-        private Application ExcelApplication
-        {
-            get
-            {
-                if (_application == null)
-                {
-                    _application = new Application();
-                }
-                return _application;
-            }
-        }
 
-        private List<Worksheet> Worksheets
-        {
-            get
-            {
-                if (_worksheets == null)
-                {
-                    _worksheets = _excelWorkbook.Worksheets.Cast<Worksheet>().ToList();
-                }
-                return _worksheets;
-            }
-        }
 
-        public ExcelCoordinator (string workbook)
+        public ExcelImportCoordinator (string workbook)
         {
-            _excelWorkbook = ExcelApplication.Workbooks.Open(workbook);
+            _excelWorkbook = new ExcelQueryFactory(workbook);
         }
 
         public List<string> GetWorkSheetList()
         {
-            return Worksheets.Select(w => w.Name).ToList();
+            return _excelWorkbook.GetWorksheetNames().Where (w => w.Contains ("Cycling")).ToList();
+        }
+
+        public void ImportRecords (string worksheetName)
+        {
+            var results = (from w in _excelWorkbook.Worksheet(worksheetName)
+                           select new
+                           {
+                               Date = w["Date"].Value,
+                               Time = w["Time (mins)"].Value,
+                               Distance = w["Distance (Miles)"],
+                           }).ToList();
+
+        }
+
+        private void GetBikeList(ListRow currentRow)
+        {
+            List<string> bikes = new List<string>();
+            int startIndex = 8;
+
+            while (currentRow.Range[0, startIndex] != string.Empty)
+            {
+
+            }
+
         }
 
         #region IDisposable Support
@@ -56,7 +59,7 @@ namespace CycleTracker.Excel
             {
                 if (disposing)
                 {
-                    _excelWorkbook.Close();
+                    _excelWorkbook.Dispose();
                     _excelWorkbook = null;
                 }
 
