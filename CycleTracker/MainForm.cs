@@ -39,6 +39,7 @@ namespace CycleTracker
         private void ImportData ()
         {
             Coordinator.GetListOfBikes();
+            Coordinator.ImportRecords();
         }
     }
 }

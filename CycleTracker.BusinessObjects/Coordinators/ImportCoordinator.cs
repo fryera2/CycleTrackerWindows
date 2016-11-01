@@ -50,10 +50,11 @@ namespace CycleTracker.BusinessObjects
             DatabaseCoordinator.CreateListOfBikes(bikes);
         }
 
-        public void ImportRecords (string worksheetName)
+        public void ImportRecords ()
         {
             
-            SpreadsheetCoordinator.ImportRecords(worksheetName);
+            List<ActivityRecord> activities = SpreadsheetCoordinator.ImportRecords();
+            DatabaseCoordinator.WriteActivities(activities);
         }
 
     }

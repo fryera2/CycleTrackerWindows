@@ -60,5 +60,24 @@ namespace CycleTracker.Database
             }
             Entities.SaveChanges();
         }
+
+        public void WriteActivities (List<ActivityRecord> activities)
+        {
+            int rideId = 1;
+            foreach (ActivityRecord currentActivity in activities)
+            {
+                Ride newRide = new Ride
+                {
+                    RideID = rideId,
+                    BikeID = currentActivity.BikeId,
+                    RideDate = currentActivity.ActivityDate,
+                    DistanceInMiles = currentActivity.DistanceInMiles,
+                    TimeInMinutes = currentActivity.TimeInMinutes
+                };
+                Entities.Rides.Add(newRide);
+                rideId++;
+            }
+            Entities.SaveChanges();
+        }
     }
 }
