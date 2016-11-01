@@ -6,29 +6,79 @@ using System.Threading.Tasks;
 using Microsoft.Office.Interop.Excel;
 using LinqToExcel;
 using log4net;
+using LinqToExcel.Query;
 
 namespace CycleTracker.Excel
 {
     public class ExcelImportCoordinator : IDisposable
     {
-        private ExcelQueryFactory _excelWorkbook;
-        private Application _application = null;
 
+        private string workbookName = string.Empty;
+        private ExcelQueryFactory _excelWorkbook;
+        private ExcelQueryFactory ExcelWorkbook
+        {
+            get
+            {
+                if (_excelWorkbook == null)
+                {
+                    _excelWorkbook = new ExcelQueryFactory(workbookName);
+                }
+                return _excelWorkbook;
+            }
+            
+        }
+      
+
+        private List<string> _worksheetList = null;
+        private List<string> WorksheetList
+        {
+            get
+            {
+                if (_worksheetList == null)
+                {
+                    _worksheetList = ExcelWorkbook.GetWorksheetNames().Where(w => w.Contains("Cycling")).ToList();
+                }
+                return _worksheetList;
+            }
+        }
 
 
         public ExcelImportCoordinator (string workbook)
         {
-            _excelWorkbook = new ExcelQueryFactory(workbook);
+            workbookName = workbook;
         }
 
-        public List<string> GetWorkSheetList()
+        public Dictionary<string, int> GetBikes()
         {
-            return _excelWorkbook.GetWorksheetNames().Where (w => w.Contains ("Cycling")).ToList();
+            Dictionary<string, int> bikes = new Dictionary<string, int>();
+            int bikeIndex = 1;
+
+            foreach (string worksheetName in WorksheetList)
+            {
+                int startIndex = 7;
+                List<string> columns = ExcelWorkbook.GetColumnNames(worksheetName).ToList();
+                while (true)
+                {
+                    string currentValue = columns[startIndex];
+                    if (currentValue == string.Format ("F{0}", (startIndex + 1)))
+                    {
+                        break;
+                    }
+                    if (!bikes.Any (b => b.Key == currentValue))
+                    {
+                        bikes.Add(currentValue, bikeIndex);
+                        bikeIndex++;
+                    }
+
+                    startIndex++;
+                }
+            }
+            return bikes;
         }
 
         public void ImportRecords (string worksheetName)
         {
-            var results = (from w in _excelWorkbook.Worksheet(worksheetName)
+            var results = (from w in ExcelWorkbook.Worksheet(worksheetName)
                            select new
                            {
                                Date = w["Date"].Value,
@@ -59,8 +109,7 @@ namespace CycleTracker.Excel
             {
                 if (disposing)
                 {
-                    _excelWorkbook.Dispose();
-                    _excelWorkbook = null;
+                    ExcelWorkbook.Dispose();
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.

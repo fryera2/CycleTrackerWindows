@@ -72,7 +72,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Coordinators\DatabaseCoordinator.cs" />
     <Compile Include="Database\Bike.cs">
       <DependentUpon>CycleDB.tt</DependentUpon>

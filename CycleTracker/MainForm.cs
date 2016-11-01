@@ -38,10 +38,7 @@ namespace CycleTracker
 
         private void ImportData ()
         {
-            foreach (string worksheet in Coordinator.GetWorkSheetList())
-            {
-                Coordinator.ImportRecords(worksheet);
-            }
+            Coordinator.GetListOfBikes();
         }
     }
 }
