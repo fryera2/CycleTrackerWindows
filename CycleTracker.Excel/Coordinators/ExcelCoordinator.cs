@@ -113,6 +113,7 @@ namespace CycleTracker.Excel
             {
                 Dictionary<int, int> worksheetMappings = BikeMappings.Where(m => m.WorksheetName == worksheetName)
                                                                      .ToDictionary(key => key.ColumnId, value => value.BikeId);
+
                 List<ActivityRecord> results = (from w in ExcelWorkbook.Worksheet(worksheetName)
                                                 where w["Date"] != null
                                                 select new ActivityRecord
@@ -120,7 +121,8 @@ namespace CycleTracker.Excel
                                                     ActivityDate = Convert.ToDateTime(w["Date"].Value),
                                                     TimeInMinutes = Convert.ToDecimal(w["Time (mins)"].Value),
                                                     DistanceInMiles = Convert.ToDecimal(w["Distance (Miles)"]),
-                                                    BikeId = GetBikeId(worksheetMappings, w)
+                                                    BikeId = GetBikeId(worksheetMappings, w),
+                                                    Ascent = (w["Ascent"].Value == null) ? 0 : Convert.ToInt32(w["Ascent"].Value)
                                                 }).ToList();
 
                 activities.AddRange(results);

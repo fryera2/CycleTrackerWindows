@@ -14,7 +14,7 @@ namespace CycleTracker.BusinessObjects
         /// <summary>
         /// Holds an instance of the database coordinator
         /// </summary>
-        protected DatabaseCoordinator DBCoordinator
+        protected DatabaseCoordinator DatabaseCoordinator
         {
             get
             {
@@ -25,5 +25,6 @@ namespace CycleTracker.BusinessObjects
                 return _dbCoordinator;
             }    
         }
+
     }
 }

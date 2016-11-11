@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Coordinators\ApplicationCoordinator.cs" />
     <Compile Include="Coordinators\BaseCoordinator.cs" />
     <Compile Include="Coordinators\ImportCoordinator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

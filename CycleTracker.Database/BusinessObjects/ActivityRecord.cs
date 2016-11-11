@@ -12,5 +12,6 @@ namespace CycleTracker.Database
         public decimal TimeInMinutes { get; set; }
         public decimal DistanceInMiles { get; set; }
         public int BikeId { get; set; }
+        public int Ascent { get; set; }
     }
 }

@@ -11,7 +11,6 @@ namespace CycleTracker.BusinessObjects
     public class ImportCoordinator : BaseCoordinator
     {
         private ExcelImportCoordinator _spreadsheetCoordinator = null;
-        private DatabaseCoordinator _databaseCoordinator = null;
         private string _fileName;
 
         private ExcelImportCoordinator SpreadsheetCoordinator
@@ -23,18 +22,6 @@ namespace CycleTracker.BusinessObjects
                     _spreadsheetCoordinator = new ExcelImportCoordinator(_fileName);
                 }
                 return _spreadsheetCoordinator;
-            }
-        }
-
-        private DatabaseCoordinator DatabaseCoordinator
-        {
-            get
-            {
-                if (_databaseCoordinator == null)
-                {
-                    _databaseCoordinator = new DatabaseCoordinator();
-                }
-                return _databaseCoordinator;
             }
         }
 

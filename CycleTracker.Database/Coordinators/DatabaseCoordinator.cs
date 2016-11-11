@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CycleTracker.Database.Database;
+using System.Globalization;
 
 namespace CycleTracker.Database
 {
@@ -32,6 +33,32 @@ namespace CycleTracker.Database
                     _bikes = Entities.Bikes.Select(b => b.BikeName).ToList();
                 }
                 return _bikes;
+            }
+        }
+
+        private List<int> _rideYears = null;
+        public List<int> RideYears
+        {
+            get
+            {
+                if (_rideYears == null)
+                {
+                    _rideYears = Entities.Rides.Select(r => r.RideDate.Value.Year).Distinct().OrderBy (y => y).ToList();
+                }
+                return _rideYears;
+            }
+        }
+
+        private List<string> _rideMonths = null;
+        public List<string> RideMonths
+        {
+            get
+            {
+                if (_rideMonths == null)
+                {
+                    _rideMonths = DateTimeFormatInfo.CurrentInfo.MonthNames.ToList();
+                }
+                return _rideMonths;
             }
         }
 
@@ -72,12 +99,42 @@ namespace CycleTracker.Database
                     BikeID = currentActivity.BikeId,
                     RideDate = currentActivity.ActivityDate,
                     DistanceInMiles = currentActivity.DistanceInMiles,
-                    TimeInMinutes = currentActivity.TimeInMinutes
+                    TimeInMinutes = currentActivity.TimeInMinutes,
+                    Ascent = currentActivity.Ascent
                 };
                 Entities.Rides.Add(newRide);
                 rideId++;
             }
             Entities.SaveChanges();
         }
+
+        public List<FilteredRide> GetFilteredRides (int month, int year)
+        {
+            List<FilteredRide> rides = (from r in Entities.Rides
+                                        let rideDate = r.RideDate.Value
+                                        where rideDate.Month == month && rideDate.Year == year
+                                        select new FilteredRide
+                                        {
+                                            RideDate = r.RideDate,
+                                            DistanceInMiles = r.DistanceInMiles,
+                                            RideTime = r.TimeInHours,
+                                            AverageSpeed = r.AverageSpeed,
+                                            Ascent = r.Ascent,
+                                            Bike = r.Bike.BikeName
+                                        }
+                                    ).ToList();
+
+            return rides;
+        }
+    }
+
+    public class FilteredRide
+    {
+        public DateTime? RideDate { get; set; }
+        public decimal? RideTime { get; set; }
+        public decimal? DistanceInMiles { get; set; }
+        public decimal? AverageSpeed { get; set; }
+        public int? Ascent { get; set; }
+        public string Bike { get; set; }
     }
 }

@@ -23,6 +23,7 @@ namespace CycleTracker.Database.Database
         public Nullable<decimal> DistanceInKm { get; set; }
         public string Calories { get; set; }
         public Nullable<decimal> AverageSpeed { get; set; }
+        public Nullable<int> Ascent { get; set; }
     
         public virtual Bike Bike { get; set; }
     }

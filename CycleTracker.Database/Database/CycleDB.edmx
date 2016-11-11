@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CycleDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CycleDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bikes">
           <Key>
             <PropertyRef Name="BikeID" />
@@ -19,12 +19,13 @@
           <Property Name="RideID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BikeID" Type="int" />
           <Property Name="RideDate" Type="date" />
-          <Property Name="TimeInMinutes" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TimeInMinutes" Type="decimal" Precision="18" Scale="2" />
           <Property Name="TimeInHours" Type="decimal" Precision="10" Scale="2" StoreGeneratedPattern="Computed" />
-          <Property Name="DistanceInMiles" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DistanceInMiles" Type="decimal" Precision="18" Scale="2" />
           <Property Name="DistanceInKm" Type="decimal" Precision="10" Scale="2" StoreGeneratedPattern="Computed" />
           <Property Name="Calories" Type="nchar" MaxLength="10" />
           <Property Name="AverageSpeed" Type="decimal" Precision="10" Scale="2" StoreGeneratedPattern="Computed" />
+          <Property Name="Ascent" Type="int" />
         </EntityType>
         <Association Name="FK_Rides_Bikes1">
           <End Role="Bikes" Type="Self.Bikes" Multiplicity="0..1">
@@ -48,8 +49,7 @@
             <End Role="Rides" EntitySet="Rides" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CycleDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -68,13 +68,14 @@
           <Property Name="RideID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BikeID" Type="Int32" />
           <Property Name="RideDate" Type="DateTime" Precision="0" />
-          <Property Name="TimeInMinutes" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TimeInMinutes" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="TimeInHours" Type="Decimal" Precision="10" Scale="2" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="DistanceInMiles" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DistanceInMiles" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="DistanceInKm" Type="Decimal" Precision="10" Scale="2" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="Calories" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="AverageSpeed" Type="Decimal" Precision="10" Scale="2" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Bike" Relationship="Self.FK_Rides_Bikes1" FromRole="Rides" ToRole="Bikes" />
+          <Property Name="Ascent" Type="Int32" />
         </EntityType>
         <Association Name="FK_Rides_Bikes1">
           <End Role="Bikes" Type="Self.Bike" Multiplicity="0..1">
@@ -115,6 +116,7 @@
           <EntitySetMapping Name="Rides">
             <EntityTypeMapping TypeName="CycleDBModel.Ride">
               <MappingFragment StoreEntitySet="Rides">
+                <ScalarProperty Name="Ascent" ColumnName="Ascent" />
                 <ScalarProperty Name="RideID" ColumnName="RideID" />
                 <ScalarProperty Name="BikeID" ColumnName="BikeID" />
                 <ScalarProperty Name="RideDate" ColumnName="RideDate" />
