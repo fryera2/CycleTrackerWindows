@@ -136,5 +136,7 @@ namespace CycleTracker.Database
         public decimal? AverageSpeed { get; set; }
         public int? Ascent { get; set; }
         public string Bike { get; set; }
+        public string Comments { get; set; }
     }
+
 }

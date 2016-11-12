@@ -58,5 +58,10 @@ namespace CycleTracker.BusinessObjects
         {
             return DatabaseCoordinator.GetFilteredRides(SelectedMonth, SelectedYear);
         }
+
+        public List<FilteredRide> GetPreviousFilteredRides()
+        {
+            return DatabaseCoordinator.GetFilteredRides(SelectedMonth, SelectedYear - 1);
+        }
     }
 }

@@ -17,6 +17,7 @@ namespace CycleTracker
 
         private ImportCoordinator _coordinator = null;
         private ApplicationCoordinator _appCoordinator = null;
+        private bool _initialising;
 
         private ImportCoordinator ImportCoordinator
         {
@@ -44,11 +45,13 @@ namespace CycleTracker
         
         public MainForm()
         {
+            _initialising = true;
             InitializeComponent();
             ClearDataBindings();
             ApplyDataBindings();
             Initialise();
-
+            _initialising = false;
+            SetDataSource();
         }
 
         private void ClearDataBindings()
@@ -86,13 +89,47 @@ namespace CycleTracker
         private void yearComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.AppCoordinator.SelectedYear = (int)yearComboBox.SelectedValue;
-            this.ridesGrid.DataSource = AppCoordinator.GetFilteredRides();
+            SetDataSource();
         }
 
         private void monthComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
             this.AppCoordinator.SelectedMonth = ((int)monthComboBox.SelectedIndex) + 1;
-            this.ridesGrid.DataSource = AppCoordinator.GetFilteredRides();
+            SetDataSource();
         }
+
+        private void SetDataSource()
+        {
+            if (_initialising) { return; }
+            this.labelCurrentYear.Text = this.AppCoordinator.SelectedYear.ToString();
+            this.labelPreviousYear.Text = (this.AppCoordinator.SelectedYear - 1).ToString();
+            var currentDataSource = AppCoordinator.GetFilteredRides();
+            var previousDataSource = AppCoordinator.GetPreviousFilteredRides();
+            this.ridesGrid.DataSource = currentDataSource;
+            this.totalRidesLabel.Text = currentDataSource.Count().ToString();
+            decimal? rideTime = currentDataSource.Sum(d => d.RideTime);
+            decimal? totalDistance = currentDataSource.Sum(d => d.DistanceInMiles).Value;
+            this.totalTimeLabel.Text = rideTime.ToString();
+            this.totalDistanceLabel.Text = totalDistance.ToString() ;
+            this.averageSpeedLabel.Text = Math.Round((Convert.ToDouble (totalDistance / rideTime)), 2).ToString();
+            int totalAscentFt = currentDataSource.Sum(d => d.Ascent).Value;
+            this.totalAscentFtLabel.Text = totalAscentFt.ToString();
+            this.totalAscentMLabel.Text = Math.Round((totalAscentFt / 3.2808), 2).ToString();
+            this.longestRideMilesLabel.Text = currentDataSource.Max(c => c.DistanceInMiles).ToString();
+            this.longestRideTimeLabel.Text = currentDataSource.Max(c => c.RideTime).ToString();
+
+            this.totalRidesPreviousLabel.Text = previousDataSource.Count().ToString();
+            decimal? rideTimePrevious = previousDataSource.Sum(d => d.RideTime);
+            decimal? totalDistancePrevious = previousDataSource.Sum(d => d.DistanceInMiles).Value;
+            this.totalTimePreviousLabel.Text = rideTimePrevious.ToString();
+            this.totalDistancePreviousLabel.Text = totalDistancePrevious.ToString();
+            this.averageSpeedPreviousLabel.Text = Math.Round((Convert.ToDouble(totalDistancePrevious / rideTimePrevious)), 2).ToString();
+            int totalAscentPreviousFt = previousDataSource.Sum(d => d.Ascent).Value;
+            this.totalAscentFtPreviousLabel.Text = totalAscentPreviousFt.ToString();
+            this.totalAscentMPreviousLabel.Text = Math.Round ((totalAscentPreviousFt / 3.2808), 2).ToString();
+            this.longestRidePreviousMilesLabel.Text = previousDataSource.Max(p => p.DistanceInMiles).ToString();
+            this.longestRideTimePreviousLabel.Text = previousDataSource.Max(p => p.RideTime).ToString();
+        }
+
     }
 }

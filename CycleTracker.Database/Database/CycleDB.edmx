@@ -25,7 +25,8 @@
           <Property Name="DistanceInKm" Type="decimal" Precision="10" Scale="2" StoreGeneratedPattern="Computed" />
           <Property Name="Calories" Type="nchar" MaxLength="10" />
           <Property Name="AverageSpeed" Type="decimal" Precision="10" Scale="2" StoreGeneratedPattern="Computed" />
-          <Property Name="Ascent" Type="int" />
+          <Property Name="Ascent" Type="int" Nullable="false" />
+          <Property Name="Comments" Type="varchar(max)" />
         </EntityType>
         <Association Name="FK_Rides_Bikes1">
           <End Role="Bikes" Type="Self.Bikes" Multiplicity="0..1">
@@ -75,7 +76,8 @@
           <Property Name="Calories" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="AverageSpeed" Type="Decimal" Precision="10" Scale="2" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Bike" Relationship="Self.FK_Rides_Bikes1" FromRole="Rides" ToRole="Bikes" />
-          <Property Name="Ascent" Type="Int32" />
+          <Property Name="Ascent" Type="Int32" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Rides_Bikes1">
           <End Role="Bikes" Type="Self.Bike" Multiplicity="0..1">
@@ -116,6 +118,7 @@
           <EntitySetMapping Name="Rides">
             <EntityTypeMapping TypeName="CycleDBModel.Ride">
               <MappingFragment StoreEntitySet="Rides">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
                 <ScalarProperty Name="Ascent" ColumnName="Ascent" />
                 <ScalarProperty Name="RideID" ColumnName="RideID" />
                 <ScalarProperty Name="BikeID" ColumnName="BikeID" />
