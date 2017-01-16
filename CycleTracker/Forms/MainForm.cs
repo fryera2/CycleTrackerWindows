@@ -124,7 +124,6 @@ namespace CycleTracker
 
         private void SetDataSource()
         {
-            return;
             if (_initialising) { return; }
             var currentDataSource = AppCoordinator.GetFilteredRides();
             var previousDataSource = AppCoordinator.GetPreviousFilteredRides();
@@ -141,23 +140,28 @@ namespace CycleTracker
             this.longestRideMilesLabel.Text = currentDataSource.Max(c => c.DistanceInMiles).ToString();
             this.longestRideTimeLabel.Text = currentDataSource.Max(c => c.RideTime).ToString();
 
-            this.totalRidesPreviousLabel.Text = previousDataSource.Count().ToString();
-            decimal? rideTimePrevious = previousDataSource.Sum(d => d.RideTime);
-            decimal? totalDistancePrevious = previousDataSource.Sum(d => d.DistanceInMiles).Value;
-            this.totalTimePreviousLabel.Text = rideTimePrevious.ToString();
-            this.totalDistancePreviousLabel.Text = totalDistancePrevious.ToString();
-            this.averageSpeedPreviousLabel.Text = Math.Round((Convert.ToDouble(totalDistancePrevious / rideTimePrevious)), 2).ToString();
-            int totalAscentPreviousFt = previousDataSource.Sum(d => d.Ascent).Value;
-            this.totalAscentFtPreviousLabel.Text = totalAscentPreviousFt.ToString();
-            this.totalAscentMPreviousLabel.Text = Math.Round ((totalAscentPreviousFt / 3.2808), 2).ToString();
-            this.longestRidePreviousMilesLabel.Text = previousDataSource.Max(p => p.DistanceInMiles).ToString();
-            this.longestRideTimePreviousLabel.Text = previousDataSource.Max(p => p.RideTime).ToString();
+            try
+            {
+                this.totalRidesPreviousLabel.Text = previousDataSource.Count().ToString();
+                decimal? rideTimePrevious = previousDataSource.Sum(d => d.RideTime);
+                decimal? totalDistancePrevious = previousDataSource.Sum(d => d.DistanceInMiles).Value;
+                this.totalTimePreviousLabel.Text = rideTimePrevious.ToString();
+                this.totalDistancePreviousLabel.Text = totalDistancePrevious.ToString();
+                this.averageSpeedPreviousLabel.Text = Math.Round((Convert.ToDouble(totalDistancePrevious / rideTimePrevious)), 2).ToString();
+                int totalAscentPreviousFt = previousDataSource.Sum(d => d.Ascent).Value;
+                this.totalAscentFtPreviousLabel.Text = totalAscentPreviousFt.ToString();
+                this.totalAscentMPreviousLabel.Text = Math.Round((totalAscentPreviousFt / 3.2808), 2).ToString();
+                this.longestRidePreviousMilesLabel.Text = previousDataSource.Max(p => p.DistanceInMiles).ToString();
+                this.longestRideTimePreviousLabel.Text = previousDataSource.Max(p => p.RideTime).ToString();
+            }
+            catch { }
         }
 
         private void addRideButton_Click(object sender, EventArgs e)
         {
             AddRideForm addForm = new AddRideForm();
             addForm.ShowDialog();
+            SetDataSource();
         }
 
         private void previousYearComboBox_SelectedIndexChanged(object sender, EventArgs e)
