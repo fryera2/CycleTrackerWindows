@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CycleTracker.BusinessObjects
 {
-    public abstract class BaseCoordinator
+    public class BaseCoordinator
     {
         private DatabaseCoordinator _dbCoordinator = null;
 
@@ -24,6 +24,11 @@ namespace CycleTracker.BusinessObjects
                 }
                 return _dbCoordinator;
             }    
+        }
+
+        protected virtual void Validate()
+        {
+
         }
 
     }

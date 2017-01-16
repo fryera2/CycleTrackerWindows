@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CycleTracker.Database.Database;
 using System.Globalization;
+using System.Data.Entity;
 
 namespace CycleTracker.Database
 {
@@ -17,7 +18,14 @@ namespace CycleTracker.Database
             {
                 if (_entities == null)
                 {
+#if DEBUG
                     _entities = new CycleDBEntities();
+                    string connection = _entities.Database.Connection.ConnectionString.Replace ("CycleDB", "CycleDB_new");
+                    _entities.Database.Connection.ConnectionString = connection;
+#else
+                    _entities = new CycleDBEntities();
+#endif
+
                 }
                 return _entities;
             }
@@ -49,6 +57,19 @@ namespace CycleTracker.Database
             }
         }
 
+        private List<int> _ridePreviousYears = null;
+        public List<int> RidePreviousYears
+        {
+            get
+            {
+                if (_ridePreviousYears == null)
+                {
+                    _ridePreviousYears = Entities.Rides.Select(r => r.RideDate.Value.Year).Distinct().OrderBy(y => y).ToList();
+                }
+                return _ridePreviousYears;
+            }
+        }
+
         private List<string> _rideMonths = null;
         public List<string> RideMonths
         {
@@ -59,6 +80,19 @@ namespace CycleTracker.Database
                     _rideMonths = DateTimeFormatInfo.CurrentInfo.MonthNames.ToList();
                 }
                 return _rideMonths;
+            }
+        }
+
+        private IOrderedQueryable<Bike> _bikeList = null;
+        public IOrderedQueryable<Bike> BikeList
+        {
+            get
+            {
+                if (_bikeList == null)
+                {
+                    _bikeList = Entities.Bikes.OrderBy(b => b.BikeName);
+                }
+                return _bikeList;
             }
         }
 
@@ -125,6 +159,21 @@ namespace CycleTracker.Database
                                     ).ToList();
 
             return rides;
+        }
+
+        public void CreateNewEntry (DateTime rideDate, decimal? rideDistance, decimal? rideTime, int rideAscent, int bikeId)
+        {
+            Ride newRide = new Ride
+            {
+                RideDate = rideDate,
+                DistanceInMiles = rideDistance,
+                TimeInMinutes = rideTime,
+                Ascent = rideAscent,
+                Bike = BikeList.Where (b => b.BikeID == bikeId).FirstOrDefault()
+            };
+
+            Entities.Rides.Add(newRide);
+            Entities.SaveChanges();
         }
     }
 

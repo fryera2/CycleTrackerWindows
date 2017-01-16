@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace CycleTracker
 {
-    public partial class MainForm : Form
+    public partial class MainForm : RideBaseForm
     {
 
         private ImportCoordinator _coordinator = null;
@@ -45,33 +45,51 @@ namespace CycleTracker
         
         public MainForm()
         {
-            _initialising = true;
             InitializeComponent();
-            ClearDataBindings();
-            ApplyDataBindings();
-            Initialise();
-            _initialising = false;
-            SetDataSource();
         }
 
-        private void ClearDataBindings()
+        protected override void ClearDataBindings()
         {
             this.monthComboBox.DataBindings.Clear();
             this.yearComboBox.DataBindings.Clear();
+            this.previousYearComboBox.DataBindings.Clear();
         }
 
-        private void ApplyDataBindings()
+        protected override void ApplyDataBindings()
         {
             this.monthComboBox.DataBindings.Add(new Binding("Text", AppCoordinator, "SelectedMonth"));
-            this.yearComboBox.DataBindings.Add(new Binding("Text", AppCoordinator, "SelectedYear"));
+            this.yearComboBox.DataBindings.Add(new Binding("Text", AppCoordinator, "SelectedCurrentYear"));
+            this.previousYearComboBox.DataBindings.Add(new Binding("Text", AppCoordinator, "SelectedPreviousYear"));
         }
 
-        private void Initialise()
+        protected override void Initialise()
         {
+            _initialising = true;
             this.monthComboBox.DataSource = AppCoordinator.RideMonths;
-            this.monthComboBox.SelectedItem = DateTimeFormatInfo.CurrentInfo.GetMonthName(DateTime.Now.Month);
-            this.yearComboBox.DataSource = AppCoordinator.RideYears;
-            this.yearComboBox.SelectedItem = DateTime.Now.Year;
+            List<int> years = AppCoordinator.RideYears;
+            List<int> previousYears = AppCoordinator.RidePreviousYears;
+            this.yearComboBox.DataSource = years;
+            this.previousYearComboBox.DataSource = previousYears;
+            int currentYear = DateTime.Now.Year;
+            int previousYear = currentYear - 1;
+            this.AppCoordinator.SelectedMonth = DateTime.Now.Month;
+           
+            this.AppCoordinator.SelectedCurrentYear = currentYear;
+            this.yearComboBox.SelectedItem = this.AppCoordinator.SelectedCurrentYear;
+
+            if (years.Contains (previousYear))
+            {
+                this.AppCoordinator.SelectedPreviousYear = previousYear;
+                this.previousYearComboBox.SelectedItem = previousYear;
+            } 
+            else
+            {
+                this.AppCoordinator.SelectedCurrentYear = currentYear;
+                this.previousYearComboBox.SelectedItem = currentYear;
+            }
+            _initialising = false;
+
+            SetDataSource();
         }
 
         private void ImportData ()
@@ -88,21 +106,26 @@ namespace CycleTracker
 
         private void yearComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.AppCoordinator.SelectedYear = (int)yearComboBox.SelectedValue;
+            if (_initialising) { return; }
+
+            this.AppCoordinator.SelectedCurrentYear = (int)yearComboBox.SelectedValue;
+
             SetDataSource();
         }
 
         private void monthComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            this.AppCoordinator.SelectedMonth = ((int)monthComboBox.SelectedIndex) + 1;
+            if (_initialising) { return; }
+
+            this.AppCoordinator.SelectedMonth = (int)monthComboBox.SelectedIndex + 1;
+
             SetDataSource();
         }
 
         private void SetDataSource()
         {
+            return;
             if (_initialising) { return; }
-            this.labelCurrentYear.Text = this.AppCoordinator.SelectedYear.ToString();
-            this.labelPreviousYear.Text = (this.AppCoordinator.SelectedYear - 1).ToString();
             var currentDataSource = AppCoordinator.GetFilteredRides();
             var previousDataSource = AppCoordinator.GetPreviousFilteredRides();
             this.ridesGrid.DataSource = currentDataSource;
@@ -129,6 +152,21 @@ namespace CycleTracker
             this.totalAscentMPreviousLabel.Text = Math.Round ((totalAscentPreviousFt / 3.2808), 2).ToString();
             this.longestRidePreviousMilesLabel.Text = previousDataSource.Max(p => p.DistanceInMiles).ToString();
             this.longestRideTimePreviousLabel.Text = previousDataSource.Max(p => p.RideTime).ToString();
+        }
+
+        private void addRideButton_Click(object sender, EventArgs e)
+        {
+            AddRideForm addForm = new AddRideForm();
+            addForm.ShowDialog();
+        }
+
+        private void previousYearComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_initialising) { return; }
+
+            this.AppCoordinator.SelectedPreviousYear = (int)previousYearComboBox.SelectedValue;
+
+            SetDataSource();
         }
 
     }

@@ -12,13 +12,22 @@ namespace CycleTracker.BusinessObjects
     {
 
         private int _selectedMonth;
-        private int _selectedYear;
+        private int _selectedCurrentYear;
+        private int _selectedPreviousYear;
 
         public List<int> RideYears
         {
             get
             {
                 return DatabaseCoordinator.RideYears;
+            }
+        }
+
+        public List<int> RidePreviousYears
+        {
+            get
+            {
+                return DatabaseCoordinator.RidePreviousYears;
             }
         }
 
@@ -42,26 +51,38 @@ namespace CycleTracker.BusinessObjects
             }
         }
 
-        public int SelectedYear
+        public int SelectedCurrentYear
         {
             get
             {
-                return _selectedYear;
+                return _selectedCurrentYear;
             }
             set
             {
-                _selectedYear = value;
+                _selectedCurrentYear = value;
+            }
+        }
+
+        public int SelectedPreviousYear
+        {
+            get
+            {
+                return _selectedPreviousYear;
+            }
+            set
+            {
+                _selectedPreviousYear = value;
             }
         }
 
         public List<FilteredRide> GetFilteredRides ()
         {
-            return DatabaseCoordinator.GetFilteredRides(SelectedMonth, SelectedYear);
+            return DatabaseCoordinator.GetFilteredRides(SelectedMonth, SelectedCurrentYear);
         }
 
         public List<FilteredRide> GetPreviousFilteredRides()
         {
-            return DatabaseCoordinator.GetFilteredRides(SelectedMonth, SelectedYear - 1);
+            return DatabaseCoordinator.GetFilteredRides(SelectedMonth, SelectedPreviousYear);
         }
     }
 }
