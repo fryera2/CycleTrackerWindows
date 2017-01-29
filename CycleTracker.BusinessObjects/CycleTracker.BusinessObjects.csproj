@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessObjects\BikeObject.cs" />
+    <Compile Include="BusinessObjects\MonthlyStatsObject.cs" />
     <Compile Include="Coordinators\ApplicationCoordinator.cs" />
     <Compile Include="Coordinators\BaseCoordinator.cs" />
     <Compile Include="Coordinators\ImportCoordinator.cs" />

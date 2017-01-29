@@ -43,7 +43,6 @@
             this.CommentsGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.summaryPanel = new System.Windows.Forms.Panel();
             this.longestRideTimePreviousLabel = new System.Windows.Forms.Label();
-            this.yearComboBox = new System.Windows.Forms.ComboBox();
             this.longestRideTimeLabel = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.longestRidePreviousMilesLabel = new System.Windows.Forms.Label();
@@ -75,12 +74,65 @@
             this.monthComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.YearToDatePanel = new System.Windows.Forms.Panel();
+            this.longestRideTimeToPreviousDate = new System.Windows.Forms.Label();
+            this.longestRideTimeToDate = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.longestRideMilesToPreviousDate = new System.Windows.Forms.Label();
+            this.longestRideMilesToDate = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.averageSpeedToPreviousDate = new System.Windows.Forms.Label();
+            this.averageSpeedToDate = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.totalAscentMToPreviousDate = new System.Windows.Forms.Label();
+            this.totalAscentFtToPreviousDate = new System.Windows.Forms.Label();
+            this.totalDistanceToPreviousDate = new System.Windows.Forms.Label();
+            this.totalTimeToPreviousDate = new System.Windows.Forms.Label();
+            this.totalRidesToPreviousDate = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
+            this.totalAscentMToDate = new System.Windows.Forms.Label();
+            this.totalAscentFtToDate = new System.Windows.Forms.Label();
+            this.totalDistanceToDate = new System.Windows.Forms.Label();
+            this.totalTimeToDate = new System.Windows.Forms.Label();
+            this.totalRidesToDate = new System.Windows.Forms.Label();
+            this.label62 = new System.Windows.Forms.Label();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label64 = new System.Windows.Forms.Label();
+            this.label65 = new System.Windows.Forms.Label();
+            this.label66 = new System.Windows.Forms.Label();
+            this.label67 = new System.Windows.Forms.Label();
+            this.label68 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
+            this.longestRideTimePreviousYearLabel = new System.Windows.Forms.Label();
+            this.longestRideTimeYearLabel = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.longestRideMilesPreviousYearLabel = new System.Windows.Forms.Label();
+            this.longestRideMilesYearLabel = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.averageSpeedPreviousYearLabel = new System.Windows.Forms.Label();
+            this.averageSpeedYearLabel = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.totalAscentMPreviousYearLabel = new System.Windows.Forms.Label();
+            this.totalAscentFtPreviousYearLabel = new System.Windows.Forms.Label();
+            this.totalDistancePreviousYearLabel = new System.Windows.Forms.Label();
+            this.totalTimePreviousYearLabel = new System.Windows.Forms.Label();
+            this.totalRidesPreviousYearLabel = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.totalAscentMYearLabel = new System.Windows.Forms.Label();
+            this.totalAscentFtYearLabel = new System.Windows.Forms.Label();
+            this.totalDistanceYearLabel = new System.Windows.Forms.Label();
+            this.totalTimeYearLabel = new System.Windows.Forms.Label();
+            this.totalRidesYearLabel = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.previousYearComboBox = new System.Windows.Forms.ComboBox();
+            this.yearComboBox = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -91,7 +143,6 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.addRideButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.previousYearComboBox = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.ridesGroupBox.SuspendLayout();
@@ -100,6 +151,7 @@
             this.summaryPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.YearToDatePanel.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -135,10 +187,10 @@
             this.ridesGroupBox.Controls.Add(this.panel2);
             this.ridesGroupBox.Controls.Add(this.panel1);
             this.ridesGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ridesGroupBox.Location = new System.Drawing.Point(3, 409);
+            this.ridesGroupBox.Location = new System.Drawing.Point(3, 454);
             this.ridesGroupBox.Name = "ridesGroupBox";
             this.ridesGroupBox.Padding = new System.Windows.Forms.Padding(10);
-            this.ridesGroupBox.Size = new System.Drawing.Size(993, 501);
+            this.ridesGroupBox.Size = new System.Drawing.Size(993, 456);
             this.ridesGroupBox.TabIndex = 1;
             this.ridesGroupBox.TabStop = false;
             this.ridesGroupBox.Text = "Rides";
@@ -150,7 +202,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(10, 72);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(973, 419);
+            this.panel2.Size = new System.Drawing.Size(973, 374);
             this.panel2.TabIndex = 1;
             // 
             // ridesGrid
@@ -170,7 +222,7 @@
             this.ridesGrid.RowHeadersVisible = false;
             this.ridesGrid.RowTemplate.Height = 24;
             this.ridesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ridesGrid.Size = new System.Drawing.Size(423, 419);
+            this.ridesGrid.Size = new System.Drawing.Size(423, 374);
             this.ridesGrid.TabIndex = 2;
             // 
             // RideDateGridColumn
@@ -252,7 +304,7 @@
             this.summaryPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.summaryPanel.Location = new System.Drawing.Point(0, 0);
             this.summaryPanel.Name = "summaryPanel";
-            this.summaryPanel.Size = new System.Drawing.Size(550, 419);
+            this.summaryPanel.Size = new System.Drawing.Size(550, 374);
             this.summaryPanel.TabIndex = 0;
             // 
             // longestRideTimePreviousLabel
@@ -264,16 +316,6 @@
             this.longestRideTimePreviousLabel.Size = new System.Drawing.Size(69, 20);
             this.longestRideTimePreviousLabel.TabIndex = 27;
             this.longestRideTimePreviousLabel.Text = "label14";
-            // 
-            // yearComboBox
-            // 
-            this.yearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.yearComboBox.FormattingEnabled = true;
-            this.yearComboBox.Location = new System.Drawing.Point(231, 3);
-            this.yearComboBox.Name = "yearComboBox";
-            this.yearComboBox.Size = new System.Drawing.Size(99, 28);
-            this.yearComboBox.TabIndex = 3;
-            this.yearComboBox.SelectedIndexChanged += new System.EventHandler(this.yearComboBox_SelectedIndexChanged);
             // 
             // longestRideTimeLabel
             // 
@@ -539,10 +581,8 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.previousYearComboBox);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.monthComboBox);
-            this.panel1.Controls.Add(this.yearComboBox);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(10, 30);
@@ -571,6 +611,7 @@
             this.monthComboBox.Name = "monthComboBox";
             this.monthComboBox.Size = new System.Drawing.Size(121, 28);
             this.monthComboBox.TabIndex = 1;
+            this.monthComboBox.SelectedIndexChanged += new System.EventHandler(this.monthComboBox_SelectedValueChanged);
             this.monthComboBox.SelectedValueChanged += new System.EventHandler(this.monthComboBox_SelectedValueChanged);
             // 
             // label1
@@ -584,6 +625,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.YearToDatePanel);
             this.groupBox1.Controls.Add(this.panel4);
             this.groupBox1.Controls.Add(this.panel3);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -591,46 +633,612 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(10);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(10);
-            this.groupBox1.Size = new System.Drawing.Size(993, 406);
+            this.groupBox1.Size = new System.Drawing.Size(993, 451);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Year to Date";
             // 
+            // YearToDatePanel
+            // 
+            this.YearToDatePanel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.YearToDatePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.YearToDatePanel.Controls.Add(this.longestRideTimeToPreviousDate);
+            this.YearToDatePanel.Controls.Add(this.longestRideTimeToDate);
+            this.YearToDatePanel.Controls.Add(this.label44);
+            this.YearToDatePanel.Controls.Add(this.longestRideMilesToPreviousDate);
+            this.YearToDatePanel.Controls.Add(this.longestRideMilesToDate);
+            this.YearToDatePanel.Controls.Add(this.label47);
+            this.YearToDatePanel.Controls.Add(this.averageSpeedToPreviousDate);
+            this.YearToDatePanel.Controls.Add(this.averageSpeedToDate);
+            this.YearToDatePanel.Controls.Add(this.label50);
+            this.YearToDatePanel.Controls.Add(this.totalAscentMToPreviousDate);
+            this.YearToDatePanel.Controls.Add(this.totalAscentFtToPreviousDate);
+            this.YearToDatePanel.Controls.Add(this.totalDistanceToPreviousDate);
+            this.YearToDatePanel.Controls.Add(this.totalTimeToPreviousDate);
+            this.YearToDatePanel.Controls.Add(this.totalRidesToPreviousDate);
+            this.YearToDatePanel.Controls.Add(this.label56);
+            this.YearToDatePanel.Controls.Add(this.totalAscentMToDate);
+            this.YearToDatePanel.Controls.Add(this.totalAscentFtToDate);
+            this.YearToDatePanel.Controls.Add(this.totalDistanceToDate);
+            this.YearToDatePanel.Controls.Add(this.totalTimeToDate);
+            this.YearToDatePanel.Controls.Add(this.totalRidesToDate);
+            this.YearToDatePanel.Controls.Add(this.label62);
+            this.YearToDatePanel.Controls.Add(this.label63);
+            this.YearToDatePanel.Controls.Add(this.label64);
+            this.YearToDatePanel.Controls.Add(this.label65);
+            this.YearToDatePanel.Controls.Add(this.label66);
+            this.YearToDatePanel.Controls.Add(this.label67);
+            this.YearToDatePanel.Controls.Add(this.label68);
+            this.YearToDatePanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.YearToDatePanel.Location = new System.Drawing.Point(560, 72);
+            this.YearToDatePanel.Name = "YearToDatePanel";
+            this.YearToDatePanel.Size = new System.Drawing.Size(550, 369);
+            this.YearToDatePanel.TabIndex = 3;
+            // 
+            // longestRideTimeToPreviousDate
+            // 
+            this.longestRideTimeToPreviousDate.AutoSize = true;
+            this.longestRideTimeToPreviousDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.longestRideTimeToPreviousDate.Location = new System.Drawing.Point(379, 328);
+            this.longestRideTimeToPreviousDate.Name = "longestRideTimeToPreviousDate";
+            this.longestRideTimeToPreviousDate.Size = new System.Drawing.Size(69, 20);
+            this.longestRideTimeToPreviousDate.TabIndex = 53;
+            this.longestRideTimeToPreviousDate.Text = "label14";
+            // 
+            // longestRideTimeToDate
+            // 
+            this.longestRideTimeToDate.AutoSize = true;
+            this.longestRideTimeToDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.longestRideTimeToDate.Location = new System.Drawing.Point(235, 328);
+            this.longestRideTimeToDate.Name = "longestRideTimeToDate";
+            this.longestRideTimeToDate.Size = new System.Drawing.Size(69, 20);
+            this.longestRideTimeToDate.TabIndex = 52;
+            this.longestRideTimeToDate.Text = "label14";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.Location = new System.Drawing.Point(18, 328);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(151, 20);
+            this.label44.TabIndex = 51;
+            this.label44.Text = "Longest ride (time)";
+            // 
+            // longestRideMilesToPreviousDate
+            // 
+            this.longestRideMilesToPreviousDate.AutoSize = true;
+            this.longestRideMilesToPreviousDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.longestRideMilesToPreviousDate.Location = new System.Drawing.Point(378, 288);
+            this.longestRideMilesToPreviousDate.Name = "longestRideMilesToPreviousDate";
+            this.longestRideMilesToPreviousDate.Size = new System.Drawing.Size(69, 20);
+            this.longestRideMilesToPreviousDate.TabIndex = 50;
+            this.longestRideMilesToPreviousDate.Text = "label14";
+            // 
+            // longestRideMilesToDate
+            // 
+            this.longestRideMilesToDate.AutoSize = true;
+            this.longestRideMilesToDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.longestRideMilesToDate.Location = new System.Drawing.Point(234, 288);
+            this.longestRideMilesToDate.Name = "longestRideMilesToDate";
+            this.longestRideMilesToDate.Size = new System.Drawing.Size(69, 20);
+            this.longestRideMilesToDate.TabIndex = 49;
+            this.longestRideMilesToDate.Text = "label14";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label47.Location = new System.Drawing.Point(18, 288);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(159, 20);
+            this.label47.TabIndex = 34;
+            this.label47.Text = "Longest ride (miles)";
+            // 
+            // averageSpeedToPreviousDate
+            // 
+            this.averageSpeedToPreviousDate.AutoSize = true;
+            this.averageSpeedToPreviousDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.averageSpeedToPreviousDate.Location = new System.Drawing.Point(378, 131);
+            this.averageSpeedToPreviousDate.Name = "averageSpeedToPreviousDate";
+            this.averageSpeedToPreviousDate.Size = new System.Drawing.Size(69, 20);
+            this.averageSpeedToPreviousDate.TabIndex = 48;
+            this.averageSpeedToPreviousDate.Text = "label10";
+            // 
+            // averageSpeedToDate
+            // 
+            this.averageSpeedToDate.AutoSize = true;
+            this.averageSpeedToDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.averageSpeedToDate.Location = new System.Drawing.Point(234, 131);
+            this.averageSpeedToDate.Name = "averageSpeedToDate";
+            this.averageSpeedToDate.Size = new System.Drawing.Size(69, 20);
+            this.averageSpeedToDate.TabIndex = 47;
+            this.averageSpeedToDate.Text = "label11";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label50.Location = new System.Drawing.Point(18, 131);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(120, 20);
+            this.label50.TabIndex = 46;
+            this.label50.Text = "Average speed";
+            // 
+            // totalAscentMToPreviousDate
+            // 
+            this.totalAscentMToPreviousDate.AutoSize = true;
+            this.totalAscentMToPreviousDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalAscentMToPreviousDate.Location = new System.Drawing.Point(378, 251);
+            this.totalAscentMToPreviousDate.Name = "totalAscentMToPreviousDate";
+            this.totalAscentMToPreviousDate.Size = new System.Drawing.Size(69, 20);
+            this.totalAscentMToPreviousDate.TabIndex = 45;
+            this.totalAscentMToPreviousDate.Text = "label14";
+            // 
+            // totalAscentFtToPreviousDate
+            // 
+            this.totalAscentFtToPreviousDate.AutoSize = true;
+            this.totalAscentFtToPreviousDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalAscentFtToPreviousDate.Location = new System.Drawing.Point(378, 211);
+            this.totalAscentFtToPreviousDate.Name = "totalAscentFtToPreviousDate";
+            this.totalAscentFtToPreviousDate.Size = new System.Drawing.Size(69, 20);
+            this.totalAscentFtToPreviousDate.TabIndex = 44;
+            this.totalAscentFtToPreviousDate.Text = "label13";
+            // 
+            // totalDistanceToPreviousDate
+            // 
+            this.totalDistanceToPreviousDate.AutoSize = true;
+            this.totalDistanceToPreviousDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalDistanceToPreviousDate.Location = new System.Drawing.Point(378, 171);
+            this.totalDistanceToPreviousDate.Name = "totalDistanceToPreviousDate";
+            this.totalDistanceToPreviousDate.Size = new System.Drawing.Size(69, 20);
+            this.totalDistanceToPreviousDate.TabIndex = 43;
+            this.totalDistanceToPreviousDate.Text = "label12";
+            // 
+            // totalTimeToPreviousDate
+            // 
+            this.totalTimeToPreviousDate.AutoSize = true;
+            this.totalTimeToPreviousDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalTimeToPreviousDate.Location = new System.Drawing.Point(379, 91);
+            this.totalTimeToPreviousDate.Name = "totalTimeToPreviousDate";
+            this.totalTimeToPreviousDate.Size = new System.Drawing.Size(69, 20);
+            this.totalTimeToPreviousDate.TabIndex = 42;
+            this.totalTimeToPreviousDate.Text = "label11";
+            // 
+            // totalRidesToPreviousDate
+            // 
+            this.totalRidesToPreviousDate.AutoSize = true;
+            this.totalRidesToPreviousDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalRidesToPreviousDate.Location = new System.Drawing.Point(379, 51);
+            this.totalRidesToPreviousDate.Name = "totalRidesToPreviousDate";
+            this.totalRidesToPreviousDate.Size = new System.Drawing.Size(69, 20);
+            this.totalRidesToPreviousDate.TabIndex = 41;
+            this.totalRidesToPreviousDate.Text = "label10";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label56.Location = new System.Drawing.Point(391, 51);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(0, 20);
+            this.label56.TabIndex = 40;
+            // 
+            // totalAscentMToDate
+            // 
+            this.totalAscentMToDate.AutoSize = true;
+            this.totalAscentMToDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalAscentMToDate.Location = new System.Drawing.Point(234, 251);
+            this.totalAscentMToDate.Name = "totalAscentMToDate";
+            this.totalAscentMToDate.Size = new System.Drawing.Size(69, 20);
+            this.totalAscentMToDate.TabIndex = 39;
+            this.totalAscentMToDate.Text = "label14";
+            // 
+            // totalAscentFtToDate
+            // 
+            this.totalAscentFtToDate.AutoSize = true;
+            this.totalAscentFtToDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalAscentFtToDate.Location = new System.Drawing.Point(234, 211);
+            this.totalAscentFtToDate.Name = "totalAscentFtToDate";
+            this.totalAscentFtToDate.Size = new System.Drawing.Size(69, 20);
+            this.totalAscentFtToDate.TabIndex = 38;
+            this.totalAscentFtToDate.Text = "label13";
+            // 
+            // totalDistanceToDate
+            // 
+            this.totalDistanceToDate.AutoSize = true;
+            this.totalDistanceToDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalDistanceToDate.Location = new System.Drawing.Point(234, 171);
+            this.totalDistanceToDate.Name = "totalDistanceToDate";
+            this.totalDistanceToDate.Size = new System.Drawing.Size(69, 20);
+            this.totalDistanceToDate.TabIndex = 37;
+            this.totalDistanceToDate.Text = "label12";
+            // 
+            // totalTimeToDate
+            // 
+            this.totalTimeToDate.AutoSize = true;
+            this.totalTimeToDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalTimeToDate.Location = new System.Drawing.Point(235, 91);
+            this.totalTimeToDate.Name = "totalTimeToDate";
+            this.totalTimeToDate.Size = new System.Drawing.Size(69, 20);
+            this.totalTimeToDate.TabIndex = 36;
+            this.totalTimeToDate.Text = "label11";
+            // 
+            // totalRidesToDate
+            // 
+            this.totalRidesToDate.AutoSize = true;
+            this.totalRidesToDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalRidesToDate.Location = new System.Drawing.Point(235, 51);
+            this.totalRidesToDate.Name = "totalRidesToDate";
+            this.totalRidesToDate.Size = new System.Drawing.Size(69, 20);
+            this.totalRidesToDate.TabIndex = 35;
+            this.totalRidesToDate.Text = "label10";
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label62.Location = new System.Drawing.Point(247, 51);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(0, 20);
+            this.label62.TabIndex = 33;
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label63.Location = new System.Drawing.Point(18, 251);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(132, 20);
+            this.label63.TabIndex = 32;
+            this.label63.Text = "Total ascent (m)";
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label64.Location = new System.Drawing.Point(18, 211);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(128, 20);
+            this.label64.TabIndex = 31;
+            this.label64.Text = "Total ascent (ft)";
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label65.Location = new System.Drawing.Point(18, 171);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(165, 20);
+            this.label65.TabIndex = 30;
+            this.label65.Text = "Total distance ridden";
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label66.Location = new System.Drawing.Point(18, 91);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(175, 20);
+            this.label66.TabIndex = 29;
+            this.label66.Text = "Total time spent riding";
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label67.Location = new System.Drawing.Point(18, 51);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(173, 20);
+            this.label67.TabIndex = 28;
+            this.label67.Text = "Total number of rides:";
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label68.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label68.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.label68.Location = new System.Drawing.Point(5, 10);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(160, 31);
+            this.label68.TabIndex = 1;
+            this.label68.Text = "Year to Date";
+            this.label68.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel4.Controls.Add(this.label17);
+            this.panel4.Controls.Add(this.longestRideTimePreviousYearLabel);
+            this.panel4.Controls.Add(this.longestRideTimeYearLabel);
             this.panel4.Controls.Add(this.label18);
+            this.panel4.Controls.Add(this.longestRideMilesPreviousYearLabel);
+            this.panel4.Controls.Add(this.longestRideMilesYearLabel);
+            this.panel4.Controls.Add(this.label21);
+            this.panel4.Controls.Add(this.averageSpeedPreviousYearLabel);
+            this.panel4.Controls.Add(this.averageSpeedYearLabel);
+            this.panel4.Controls.Add(this.label24);
+            this.panel4.Controls.Add(this.totalAscentMPreviousYearLabel);
+            this.panel4.Controls.Add(this.totalAscentFtPreviousYearLabel);
+            this.panel4.Controls.Add(this.totalDistancePreviousYearLabel);
+            this.panel4.Controls.Add(this.totalTimePreviousYearLabel);
+            this.panel4.Controls.Add(this.totalRidesPreviousYearLabel);
+            this.panel4.Controls.Add(this.label30);
+            this.panel4.Controls.Add(this.totalAscentMYearLabel);
+            this.panel4.Controls.Add(this.totalAscentFtYearLabel);
+            this.panel4.Controls.Add(this.totalDistanceYearLabel);
+            this.panel4.Controls.Add(this.totalTimeYearLabel);
+            this.panel4.Controls.Add(this.totalRidesYearLabel);
+            this.panel4.Controls.Add(this.label36);
+            this.panel4.Controls.Add(this.label37);
+            this.panel4.Controls.Add(this.label38);
+            this.panel4.Controls.Add(this.label39);
+            this.panel4.Controls.Add(this.label40);
+            this.panel4.Controls.Add(this.label41);
             this.panel4.Controls.Add(this.label13);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(10, 72);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(550, 324);
+            this.panel4.Size = new System.Drawing.Size(550, 369);
             this.panel4.TabIndex = 2;
             // 
-            // label17
+            // longestRideTimePreviousYearLabel
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label17.Location = new System.Drawing.Point(367, 58);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(73, 25);
-            this.label17.TabIndex = 15;
-            this.label17.Text = "{Year}";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.longestRideTimePreviousYearLabel.AutoSize = true;
+            this.longestRideTimePreviousYearLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.longestRideTimePreviousYearLabel.Location = new System.Drawing.Point(379, 328);
+            this.longestRideTimePreviousYearLabel.Name = "longestRideTimePreviousYearLabel";
+            this.longestRideTimePreviousYearLabel.Size = new System.Drawing.Size(69, 20);
+            this.longestRideTimePreviousYearLabel.TabIndex = 53;
+            this.longestRideTimePreviousYearLabel.Text = "label14";
+            // 
+            // longestRideTimeYearLabel
+            // 
+            this.longestRideTimeYearLabel.AutoSize = true;
+            this.longestRideTimeYearLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.longestRideTimeYearLabel.Location = new System.Drawing.Point(235, 328);
+            this.longestRideTimeYearLabel.Name = "longestRideTimeYearLabel";
+            this.longestRideTimeYearLabel.Size = new System.Drawing.Size(69, 20);
+            this.longestRideTimeYearLabel.TabIndex = 52;
+            this.longestRideTimeYearLabel.Text = "label14";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label18.Location = new System.Drawing.Point(223, 58);
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(18, 328);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(73, 25);
-            this.label18.TabIndex = 14;
-            this.label18.Text = "{Year}";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label18.Size = new System.Drawing.Size(151, 20);
+            this.label18.TabIndex = 51;
+            this.label18.Text = "Longest ride (time)";
+            // 
+            // longestRideMilesPreviousYearLabel
+            // 
+            this.longestRideMilesPreviousYearLabel.AutoSize = true;
+            this.longestRideMilesPreviousYearLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.longestRideMilesPreviousYearLabel.Location = new System.Drawing.Point(378, 288);
+            this.longestRideMilesPreviousYearLabel.Name = "longestRideMilesPreviousYearLabel";
+            this.longestRideMilesPreviousYearLabel.Size = new System.Drawing.Size(69, 20);
+            this.longestRideMilesPreviousYearLabel.TabIndex = 50;
+            this.longestRideMilesPreviousYearLabel.Text = "label14";
+            // 
+            // longestRideMilesYearLabel
+            // 
+            this.longestRideMilesYearLabel.AutoSize = true;
+            this.longestRideMilesYearLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.longestRideMilesYearLabel.Location = new System.Drawing.Point(234, 288);
+            this.longestRideMilesYearLabel.Name = "longestRideMilesYearLabel";
+            this.longestRideMilesYearLabel.Size = new System.Drawing.Size(69, 20);
+            this.longestRideMilesYearLabel.TabIndex = 49;
+            this.longestRideMilesYearLabel.Text = "label14";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(18, 288);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(159, 20);
+            this.label21.TabIndex = 34;
+            this.label21.Text = "Longest ride (miles)";
+            // 
+            // averageSpeedPreviousYearLabel
+            // 
+            this.averageSpeedPreviousYearLabel.AutoSize = true;
+            this.averageSpeedPreviousYearLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.averageSpeedPreviousYearLabel.Location = new System.Drawing.Point(378, 131);
+            this.averageSpeedPreviousYearLabel.Name = "averageSpeedPreviousYearLabel";
+            this.averageSpeedPreviousYearLabel.Size = new System.Drawing.Size(69, 20);
+            this.averageSpeedPreviousYearLabel.TabIndex = 48;
+            this.averageSpeedPreviousYearLabel.Text = "label10";
+            // 
+            // averageSpeedYearLabel
+            // 
+            this.averageSpeedYearLabel.AutoSize = true;
+            this.averageSpeedYearLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.averageSpeedYearLabel.Location = new System.Drawing.Point(234, 131);
+            this.averageSpeedYearLabel.Name = "averageSpeedYearLabel";
+            this.averageSpeedYearLabel.Size = new System.Drawing.Size(69, 20);
+            this.averageSpeedYearLabel.TabIndex = 47;
+            this.averageSpeedYearLabel.Text = "label11";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(18, 131);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(120, 20);
+            this.label24.TabIndex = 46;
+            this.label24.Text = "Average speed";
+            // 
+            // totalAscentMPreviousYearLabel
+            // 
+            this.totalAscentMPreviousYearLabel.AutoSize = true;
+            this.totalAscentMPreviousYearLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalAscentMPreviousYearLabel.Location = new System.Drawing.Point(378, 251);
+            this.totalAscentMPreviousYearLabel.Name = "totalAscentMPreviousYearLabel";
+            this.totalAscentMPreviousYearLabel.Size = new System.Drawing.Size(69, 20);
+            this.totalAscentMPreviousYearLabel.TabIndex = 45;
+            this.totalAscentMPreviousYearLabel.Text = "label14";
+            // 
+            // totalAscentFtPreviousYearLabel
+            // 
+            this.totalAscentFtPreviousYearLabel.AutoSize = true;
+            this.totalAscentFtPreviousYearLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalAscentFtPreviousYearLabel.Location = new System.Drawing.Point(378, 211);
+            this.totalAscentFtPreviousYearLabel.Name = "totalAscentFtPreviousYearLabel";
+            this.totalAscentFtPreviousYearLabel.Size = new System.Drawing.Size(69, 20);
+            this.totalAscentFtPreviousYearLabel.TabIndex = 44;
+            this.totalAscentFtPreviousYearLabel.Text = "label13";
+            // 
+            // totalDistancePreviousYearLabel
+            // 
+            this.totalDistancePreviousYearLabel.AutoSize = true;
+            this.totalDistancePreviousYearLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalDistancePreviousYearLabel.Location = new System.Drawing.Point(378, 171);
+            this.totalDistancePreviousYearLabel.Name = "totalDistancePreviousYearLabel";
+            this.totalDistancePreviousYearLabel.Size = new System.Drawing.Size(69, 20);
+            this.totalDistancePreviousYearLabel.TabIndex = 43;
+            this.totalDistancePreviousYearLabel.Text = "label12";
+            // 
+            // totalTimePreviousYearLabel
+            // 
+            this.totalTimePreviousYearLabel.AutoSize = true;
+            this.totalTimePreviousYearLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalTimePreviousYearLabel.Location = new System.Drawing.Point(379, 91);
+            this.totalTimePreviousYearLabel.Name = "totalTimePreviousYearLabel";
+            this.totalTimePreviousYearLabel.Size = new System.Drawing.Size(69, 20);
+            this.totalTimePreviousYearLabel.TabIndex = 42;
+            this.totalTimePreviousYearLabel.Text = "label11";
+            // 
+            // totalRidesPreviousYearLabel
+            // 
+            this.totalRidesPreviousYearLabel.AutoSize = true;
+            this.totalRidesPreviousYearLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalRidesPreviousYearLabel.Location = new System.Drawing.Point(379, 51);
+            this.totalRidesPreviousYearLabel.Name = "totalRidesPreviousYearLabel";
+            this.totalRidesPreviousYearLabel.Size = new System.Drawing.Size(69, 20);
+            this.totalRidesPreviousYearLabel.TabIndex = 41;
+            this.totalRidesPreviousYearLabel.Text = "label10";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(391, 51);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(0, 20);
+            this.label30.TabIndex = 40;
+            // 
+            // totalAscentMYearLabel
+            // 
+            this.totalAscentMYearLabel.AutoSize = true;
+            this.totalAscentMYearLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalAscentMYearLabel.Location = new System.Drawing.Point(234, 251);
+            this.totalAscentMYearLabel.Name = "totalAscentMYearLabel";
+            this.totalAscentMYearLabel.Size = new System.Drawing.Size(69, 20);
+            this.totalAscentMYearLabel.TabIndex = 39;
+            this.totalAscentMYearLabel.Text = "label14";
+            // 
+            // totalAscentFtYearLabel
+            // 
+            this.totalAscentFtYearLabel.AutoSize = true;
+            this.totalAscentFtYearLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalAscentFtYearLabel.Location = new System.Drawing.Point(234, 211);
+            this.totalAscentFtYearLabel.Name = "totalAscentFtYearLabel";
+            this.totalAscentFtYearLabel.Size = new System.Drawing.Size(69, 20);
+            this.totalAscentFtYearLabel.TabIndex = 38;
+            this.totalAscentFtYearLabel.Text = "label13";
+            // 
+            // totalDistanceYearLabel
+            // 
+            this.totalDistanceYearLabel.AutoSize = true;
+            this.totalDistanceYearLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalDistanceYearLabel.Location = new System.Drawing.Point(234, 171);
+            this.totalDistanceYearLabel.Name = "totalDistanceYearLabel";
+            this.totalDistanceYearLabel.Size = new System.Drawing.Size(69, 20);
+            this.totalDistanceYearLabel.TabIndex = 37;
+            this.totalDistanceYearLabel.Text = "label12";
+            // 
+            // totalTimeYearLabel
+            // 
+            this.totalTimeYearLabel.AutoSize = true;
+            this.totalTimeYearLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalTimeYearLabel.Location = new System.Drawing.Point(235, 91);
+            this.totalTimeYearLabel.Name = "totalTimeYearLabel";
+            this.totalTimeYearLabel.Size = new System.Drawing.Size(69, 20);
+            this.totalTimeYearLabel.TabIndex = 36;
+            this.totalTimeYearLabel.Text = "label11";
+            // 
+            // totalRidesYearLabel
+            // 
+            this.totalRidesYearLabel.AutoSize = true;
+            this.totalRidesYearLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalRidesYearLabel.Location = new System.Drawing.Point(235, 51);
+            this.totalRidesYearLabel.Name = "totalRidesYearLabel";
+            this.totalRidesYearLabel.Size = new System.Drawing.Size(69, 20);
+            this.totalRidesYearLabel.TabIndex = 35;
+            this.totalRidesYearLabel.Text = "label10";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.Location = new System.Drawing.Point(247, 51);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(0, 20);
+            this.label36.TabIndex = 33;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Location = new System.Drawing.Point(18, 251);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(132, 20);
+            this.label37.TabIndex = 32;
+            this.label37.Text = "Total ascent (m)";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Location = new System.Drawing.Point(18, 211);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(128, 20);
+            this.label38.TabIndex = 31;
+            this.label38.Text = "Total ascent (ft)";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.Location = new System.Drawing.Point(18, 171);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(165, 20);
+            this.label39.TabIndex = 30;
+            this.label39.Text = "Total distance ridden";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Location = new System.Drawing.Point(18, 91);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(175, 20);
+            this.label40.TabIndex = 29;
+            this.label40.Text = "Total time spent riding";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Location = new System.Drawing.Point(18, 51);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(173, 20);
+            this.label41.TabIndex = 28;
+            this.label41.Text = "Total number of rides:";
             // 
             // label13
             // 
@@ -648,7 +1256,8 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.LightGray;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.comboBox1);
+            this.panel3.Controls.Add(this.previousYearComboBox);
+            this.panel3.Controls.Add(this.yearComboBox);
             this.panel3.Controls.Add(this.label15);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(10, 30);
@@ -656,15 +1265,27 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(973, 42);
             this.panel3.TabIndex = 1;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
-            // comboBox1
+            // previousYearComboBox
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(94, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 28);
-            this.comboBox1.TabIndex = 3;
+            this.previousYearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.previousYearComboBox.FormattingEnabled = true;
+            this.previousYearComboBox.Location = new System.Drawing.Point(375, 3);
+            this.previousYearComboBox.Name = "previousYearComboBox";
+            this.previousYearComboBox.Size = new System.Drawing.Size(121, 28);
+            this.previousYearComboBox.TabIndex = 6;
+            this.previousYearComboBox.SelectedIndexChanged += new System.EventHandler(this.previousYearComboBox_SelectedIndexChanged);
+            // 
+            // yearComboBox
+            // 
+            this.yearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.yearComboBox.FormattingEnabled = true;
+            this.yearComboBox.Location = new System.Drawing.Point(232, 3);
+            this.yearComboBox.Name = "yearComboBox";
+            this.yearComboBox.Size = new System.Drawing.Size(99, 28);
+            this.yearComboBox.TabIndex = 4;
+            this.yearComboBox.SelectedIndexChanged += new System.EventHandler(this.yearComboBox_SelectedIndexChanged);
             // 
             // label15
             // 
@@ -680,7 +1301,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(955, 840);
+            this.tabPage2.Size = new System.Drawing.Size(999, 913);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -757,16 +1378,6 @@
             this.toolStripButton2.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton2.Text = "toolStripButton2";
             // 
-            // previousYearComboBox
-            // 
-            this.previousYearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.previousYearComboBox.FormattingEnabled = true;
-            this.previousYearComboBox.Location = new System.Drawing.Point(376, 3);
-            this.previousYearComboBox.Name = "previousYearComboBox";
-            this.previousYearComboBox.Size = new System.Drawing.Size(121, 28);
-            this.previousYearComboBox.TabIndex = 5;
-            this.previousYearComboBox.SelectedIndexChanged += new System.EventHandler(this.previousYearComboBox_SelectedIndexChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -789,6 +1400,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.YearToDatePanel.ResumeLayout(false);
+            this.YearToDatePanel.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -816,7 +1429,6 @@
         private System.Windows.Forms.ToolStripMenuItem importRecordsMenu;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox yearComboBox;
         private System.Windows.Forms.ComboBox monthComboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView ridesGrid;
@@ -857,16 +1469,68 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CommentsGridColumn;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton addRideButton;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ComboBox yearComboBox;
         private System.Windows.Forms.ComboBox previousYearComboBox;
+        private System.Windows.Forms.Label longestRideTimePreviousYearLabel;
+        private System.Windows.Forms.Label longestRideTimeYearLabel;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label longestRideMilesPreviousYearLabel;
+        private System.Windows.Forms.Label longestRideMilesYearLabel;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label averageSpeedPreviousYearLabel;
+        private System.Windows.Forms.Label averageSpeedYearLabel;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label totalAscentMPreviousYearLabel;
+        private System.Windows.Forms.Label totalAscentFtPreviousYearLabel;
+        private System.Windows.Forms.Label totalDistancePreviousYearLabel;
+        private System.Windows.Forms.Label totalTimePreviousYearLabel;
+        private System.Windows.Forms.Label totalRidesPreviousYearLabel;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label totalAscentMYearLabel;
+        private System.Windows.Forms.Label totalAscentFtYearLabel;
+        private System.Windows.Forms.Label totalDistanceYearLabel;
+        private System.Windows.Forms.Label totalTimeYearLabel;
+        private System.Windows.Forms.Label totalRidesYearLabel;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Panel YearToDatePanel;
+        private System.Windows.Forms.Label longestRideTimeToPreviousDate;
+        private System.Windows.Forms.Label longestRideTimeToDate;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label longestRideMilesToPreviousDate;
+        private System.Windows.Forms.Label longestRideMilesToDate;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Label averageSpeedToPreviousDate;
+        private System.Windows.Forms.Label averageSpeedToDate;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label totalAscentMToPreviousDate;
+        private System.Windows.Forms.Label totalAscentFtToPreviousDate;
+        private System.Windows.Forms.Label totalDistanceToPreviousDate;
+        private System.Windows.Forms.Label totalTimeToPreviousDate;
+        private System.Windows.Forms.Label totalRidesToPreviousDate;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Label totalAscentMToDate;
+        private System.Windows.Forms.Label totalAscentFtToDate;
+        private System.Windows.Forms.Label totalDistanceToDate;
+        private System.Windows.Forms.Label totalTimeToDate;
+        private System.Windows.Forms.Label totalRidesToDate;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.Label label68;
     }
 }
 

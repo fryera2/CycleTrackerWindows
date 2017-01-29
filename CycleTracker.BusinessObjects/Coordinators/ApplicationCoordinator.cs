@@ -60,6 +60,7 @@ namespace CycleTracker.BusinessObjects
             set
             {
                 _selectedCurrentYear = value;
+                _filteredRides = null;
             }
         }
 
@@ -72,17 +73,60 @@ namespace CycleTracker.BusinessObjects
             set
             {
                 _selectedPreviousYear = value;
+                _filteredRides = null;
+            }
+        }
+
+        private List<FilteredRide> _filteredRides = null;
+        protected List<FilteredRide> FilteredRides
+        {
+            get
+            {
+                if (_filteredRides == null)
+                {
+                    _filteredRides = DatabaseCoordinator.GetFilteredRidesForYears(SelectedCurrentYear, SelectedPreviousYear);
+                }
+                return _filteredRides;
+            }
+            set
+            {
+                _filteredRides = value;
             }
         }
 
         public List<FilteredRide> GetFilteredRides ()
         {
-            return DatabaseCoordinator.GetFilteredRides(SelectedMonth, SelectedCurrentYear);
+            return FilteredRides.Where(r => ((DateTime)r.RideDate).Year == SelectedCurrentYear && ((DateTime)r.RideDate).Month == SelectedMonth).ToList();
         }
 
         public List<FilteredRide> GetPreviousFilteredRides()
         {
-            return DatabaseCoordinator.GetFilteredRides(SelectedMonth, SelectedPreviousYear);
+            return FilteredRides.Where(r => ((DateTime)r.RideDate).Year == SelectedPreviousYear && ((DateTime)r.RideDate).Month == SelectedMonth).ToList();
         }
+
+        public List<FilteredRide> GetFilteredRidesForYear()
+        {
+            return FilteredRides.Where(r => ((DateTime)r.RideDate).Year == SelectedCurrentYear).ToList();
+        }
+
+        public List<FilteredRide> GetPreviousFilteredRidesForYear()
+        {
+            return FilteredRides.Where(r => ((DateTime)r.RideDate).Year == SelectedPreviousYear).ToList();
+        }
+
+        public List<FilteredRide> GetFilteredRidesToDate()
+        {
+            DateTime newDate = new DateTime(SelectedCurrentYear, DateTime.Now.Month, DateTime.Now.Day);
+            return FilteredRides.Where(r => ((DateTime)r.RideDate).CompareTo(newDate) <= 0 &&
+                                            ((DateTime)r.RideDate).Year == SelectedCurrentYear).ToList();
+        }
+
+        public List<FilteredRide> GetPreviousRidesToDate()
+        {
+            DateTime newDate = new DateTime(SelectedPreviousYear, DateTime.Now.Month, DateTime.Now.Day);
+            return FilteredRides.Where(r => ((DateTime)r.RideDate).CompareTo(newDate) <= 0 &&
+                                            ((DateTime)r.RideDate).Year == SelectedPreviousYear).ToList();
+        }
+
     }
 }

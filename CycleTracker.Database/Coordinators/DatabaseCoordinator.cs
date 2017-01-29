@@ -142,11 +142,11 @@ namespace CycleTracker.Database
             Entities.SaveChanges();
         }
 
-        public List<FilteredRide> GetFilteredRides (int month, int year)
+        public List<FilteredRide> GetFilteredRidesForYears (int year, int previousYear)
         {
             List<FilteredRide> rides = (from r in Entities.Rides
                                         let rideDate = r.RideDate.Value
-                                        where rideDate.Month == month && rideDate.Year == year
+                                        where rideDate.Year == year || rideDate.Year == previousYear
                                         select new FilteredRide
                                         {
                                             RideDate = r.RideDate,

@@ -50,7 +50,7 @@ namespace CycleTracker
 
         protected override void ApplyDataBindings()
         {
-            this.rideDatePicker.DataBindings.Add(new Binding("Text", Coordinator, "RideDate"));
+            this.rideDatePicker.DataBindings.Add(new Binding("Value", Coordinator, "RideDate"));
             this.rideDistanceTextBox.DataBindings.Add(new Binding("Text", Coordinator, "RideDistance"));
             this.rideTimeTextBox.DataBindings.Add(new Binding("Text", Coordinator, "RideTime"));
             this.rideAscentTextBox.DataBindings.Add(new Binding("Text", Coordinator, "RideAscent"));

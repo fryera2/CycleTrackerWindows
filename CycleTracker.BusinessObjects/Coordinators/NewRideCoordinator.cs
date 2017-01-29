@@ -9,7 +9,7 @@ namespace CycleTracker.BusinessObjects
     public class NewRideCoordinator : BaseCoordinator
     {
 
-        private DateTime? _rideDate = null;
+        private DateTime _rideDate = DateTime.Now;
 
         public List<BikeObject> BikeList
         {
@@ -20,14 +20,10 @@ namespace CycleTracker.BusinessObjects
             }
         }
 
-        public DateTime? RideDate
+        public DateTime RideDate
         {
             get
             {
-                if (_rideDate == null)
-                {
-                    _rideDate = DateTime.Now;
-                }
                 return _rideDate;
             }
             set

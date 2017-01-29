@@ -89,7 +89,9 @@ namespace CycleTracker
             }
             _initialising = false;
 
-            SetDataSource();
+            SetYearDataSource();
+            SetYearToDateDataSource();
+            SetMonthDataSource();
         }
 
         private void ImportData ()
@@ -110,7 +112,9 @@ namespace CycleTracker
 
             this.AppCoordinator.SelectedCurrentYear = (int)yearComboBox.SelectedValue;
 
-            SetDataSource();
+            SetYearDataSource();
+            SetYearToDateDataSource();
+            SetMonthDataSource();
         }
 
         private void monthComboBox_SelectedValueChanged(object sender, EventArgs e)
@@ -119,49 +123,86 @@ namespace CycleTracker
 
             this.AppCoordinator.SelectedMonth = (int)monthComboBox.SelectedIndex + 1;
 
-            SetDataSource();
+            SetMonthDataSource();
         }
 
-        private void SetDataSource()
+        private void SetMonthDataSource()
         {
-            if (_initialising) { return; }
-            var currentDataSource = AppCoordinator.GetFilteredRides();
-            var previousDataSource = AppCoordinator.GetPreviousFilteredRides();
-            this.ridesGrid.DataSource = currentDataSource;
-            this.totalRidesLabel.Text = currentDataSource.Count().ToString();
-            decimal? rideTime = currentDataSource.Sum(d => d.RideTime);
-            decimal? totalDistance = currentDataSource.Sum(d => d.DistanceInMiles).Value;
-            this.totalTimeLabel.Text = rideTime.ToString();
-            this.totalDistanceLabel.Text = totalDistance.ToString() ;
-            this.averageSpeedLabel.Text = Math.Round((Convert.ToDouble (totalDistance / rideTime)), 2).ToString();
-            int totalAscentFt = currentDataSource.Sum(d => d.Ascent).Value;
-            this.totalAscentFtLabel.Text = totalAscentFt.ToString();
-            this.totalAscentMLabel.Text = Math.Round((totalAscentFt / 3.2808), 2).ToString();
-            this.longestRideMilesLabel.Text = currentDataSource.Max(c => c.DistanceInMiles).ToString();
-            this.longestRideTimeLabel.Text = currentDataSource.Max(c => c.RideTime).ToString();
+            CombinedStatsObject current = new CombinedStatsObject(AppCoordinator.GetFilteredRides(), AppCoordinator.GetPreviousFilteredRides());
 
-            try
-            {
-                this.totalRidesPreviousLabel.Text = previousDataSource.Count().ToString();
-                decimal? rideTimePrevious = previousDataSource.Sum(d => d.RideTime);
-                decimal? totalDistancePrevious = previousDataSource.Sum(d => d.DistanceInMiles).Value;
-                this.totalTimePreviousLabel.Text = rideTimePrevious.ToString();
-                this.totalDistancePreviousLabel.Text = totalDistancePrevious.ToString();
-                this.averageSpeedPreviousLabel.Text = Math.Round((Convert.ToDouble(totalDistancePrevious / rideTimePrevious)), 2).ToString();
-                int totalAscentPreviousFt = previousDataSource.Sum(d => d.Ascent).Value;
-                this.totalAscentFtPreviousLabel.Text = totalAscentPreviousFt.ToString();
-                this.totalAscentMPreviousLabel.Text = Math.Round((totalAscentPreviousFt / 3.2808), 2).ToString();
-                this.longestRidePreviousMilesLabel.Text = previousDataSource.Max(p => p.DistanceInMiles).ToString();
-                this.longestRideTimePreviousLabel.Text = previousDataSource.Max(p => p.RideTime).ToString();
-            }
-            catch { }
+            this.ridesGrid.DataSource = AppCoordinator.GetFilteredRides();
+            this.totalRidesLabel.Text = current.TotalRides.ToString();
+            this.totalTimeLabel.Text = current.TotalTime.ToString();
+            this.averageSpeedLabel.Text = current.AverageSpeed.ToString();
+            this.totalDistanceLabel.Text = current.TotalDistance.ToString();
+            this.totalAscentFtLabel.Text = current.TotalAscentFt.ToString();
+            this.totalAscentMLabel.Text = current.TotalAscentMetres.ToString();
+            this.longestRideMilesLabel.Text = current.LongestRideMiles.ToString();
+            this.longestRideTimeLabel.Text = current.LongestRideTime.ToString();
+
+            this.totalRidesPreviousLabel.Text = current.TotalPreviousRides.ToString();
+            this.totalTimePreviousLabel.Text = current.TotalPreviousTime.ToString();
+            this.averageSpeedPreviousLabel.Text = current.AveragePreviousSpeed.ToString();
+            this.totalDistancePreviousLabel.Text = current.TotalPreviousDistance.ToString();
+            this.totalAscentFtPreviousLabel.Text = current.TotalPreviousAscentFt.ToString();
+            this.totalAscentMPreviousLabel.Text = current.TotalPreviousAscentMetres.ToString();
+            this.longestRidePreviousMilesLabel.Text = current.LongestPreviousRideInMiles.ToString();
+            this.longestRideTimePreviousLabel.Text = current.LongestPreviousRideTime.ToString();
+
+        }
+
+        private void SetYearDataSource ()
+        {
+            CombinedStatsObject current = new CombinedStatsObject(AppCoordinator.GetFilteredRidesForYear(), AppCoordinator.GetPreviousFilteredRidesForYear());
+
+            this.totalRidesYearLabel.Text = current.TotalRides.ToString();
+            this.totalTimeYearLabel.Text = current.TotalTime.ToString();
+            this.averageSpeedYearLabel.Text = current.AverageSpeed.ToString();
+            this.totalDistanceYearLabel.Text = current.TotalDistance.ToString();
+            this.totalAscentFtYearLabel.Text = current.TotalAscentFt.ToString();
+            this.totalAscentMYearLabel.Text = current.TotalAscentMetres.ToString();
+            this.longestRideMilesYearLabel.Text = current.LongestRideMiles.ToString();
+            this.longestRideTimeYearLabel.Text = current.LongestRideTime.ToString();
+
+            this.totalRidesPreviousYearLabel.Text = current.TotalPreviousRides.ToString();
+            this.totalTimePreviousYearLabel.Text = current.TotalPreviousTime.ToString();
+            this.averageSpeedPreviousYearLabel.Text = current.AveragePreviousSpeed.ToString();
+            this.totalDistancePreviousYearLabel.Text = current.TotalPreviousDistance.ToString();
+            this.totalAscentFtPreviousYearLabel.Text = current.TotalPreviousAscentFt.ToString();
+            this.totalAscentMPreviousYearLabel.Text = current.TotalPreviousAscentMetres.ToString();
+            this.longestRideMilesPreviousYearLabel.Text = current.LongestPreviousRideInMiles.ToString();
+            this.longestRideTimePreviousYearLabel.Text = current.LongestPreviousRideTime.ToString();
+        }
+
+        private void SetYearToDateDataSource()
+        {
+            CombinedStatsObject current = new CombinedStatsObject(AppCoordinator.GetFilteredRidesToDate(), AppCoordinator.GetPreviousRidesToDate());
+
+            this.totalRidesToDate.Text = current.TotalRides.ToString();
+            this.totalTimeToDate.Text = current.TotalTime.ToString();
+            this.averageSpeedToDate.Text = current.AverageSpeed.ToString();
+            this.totalDistanceToDate.Text = current.TotalDistance.ToString();
+            this.totalAscentFtToDate.Text = current.TotalAscentFt.ToString();
+            this.totalAscentMToDate.Text = current.TotalAscentMetres.ToString();
+            this.YearToDatePanel.Text = current.TotalAscentMetres.ToString();
+            this.longestRideMilesToDate.Text = current.LongestRideMiles.ToString();
+            this.longestRideTimeToDate.Text = current.LongestRideTime.ToString();
+
+            this.totalRidesToPreviousDate.Text = current.TotalPreviousRides.ToString();
+            this.totalTimeToPreviousDate.Text = current.TotalPreviousTime.ToString();
+            this.averageSpeedToPreviousDate.Text = current.AveragePreviousSpeed.ToString();
+            this.totalDistanceToPreviousDate.Text = current.TotalPreviousDistance.ToString();
+            this.totalAscentFtToPreviousDate.Text = current.TotalPreviousAscentFt.ToString();
+            this.totalAscentMToPreviousDate.Text = current.TotalPreviousAscentMetres.ToString();
+            this.longestRideMilesToPreviousDate.Text = current.LongestPreviousRideInMiles.ToString();
+            this.longestRideTimeToPreviousDate.Text = current.LongestPreviousRideTime.ToString();
         }
 
         private void addRideButton_Click(object sender, EventArgs e)
         {
             AddRideForm addForm = new AddRideForm();
             addForm.ShowDialog();
-            SetDataSource();
+            SetMonthDataSource();
         }
 
         private void previousYearComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -170,7 +211,14 @@ namespace CycleTracker
 
             this.AppCoordinator.SelectedPreviousYear = (int)previousYearComboBox.SelectedValue;
 
-            SetDataSource();
+            SetYearDataSource();
+            SetYearToDateDataSource();
+            SetMonthDataSource();
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
     }
