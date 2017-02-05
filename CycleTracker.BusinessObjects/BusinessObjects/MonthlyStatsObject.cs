@@ -145,5 +145,69 @@ namespace CycleTracker.BusinessObjects
             }
         }
 
+        public int TotalRideDifference
+        {
+            get
+            {
+                return TotalRides - TotalPreviousRides;
+            }
+        }
+
+        public decimal TotalTimeDifference
+        {
+            get
+            {
+                return TotalTime - TotalPreviousTime;
+            }
+        }
+
+        public decimal TotalDistanceDifference
+        {
+            get
+            {
+                return TotalDistance - TotalPreviousDistance;
+            }
+        }
+
+        public decimal TotalSpeedDifference
+        {
+            get
+            {
+                return AverageSpeed - AveragePreviousSpeed;
+            }
+        }
+
+        public decimal TotalAscentDifferenceFt
+        {
+            get
+            {
+                return TotalAscentFt - TotalPreviousAscentFt;
+            }
+        }
+
+        public decimal TotalAscentDifferenceMetres
+        {
+            get
+            {
+                return TotalAscentMetres - TotalPreviousAscentMetres;
+            }
+        }
+
+        public decimal LongestRideDifference
+        {
+            get
+            {
+                return LongestRideMiles - LongestPreviousRideInMiles;
+            }
+        }
+        
+        public decimal LongestTimeDifference
+        {
+            get
+            {
+                return LongestRideTime - LongestPreviousRideTime;
+            }
+        }
+
     }
 }

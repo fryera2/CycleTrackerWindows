@@ -73,6 +73,7 @@ namespace CycleTracker
             int currentYear = DateTime.Now.Year;
             int previousYear = currentYear - 1;
             this.AppCoordinator.SelectedMonth = DateTime.Now.Month;
+            this.monthComboBox.SelectedIndex = (this.AppCoordinator.SelectedMonth - 1);
            
             this.AppCoordinator.SelectedCurrentYear = currentYear;
             this.yearComboBox.SelectedItem = this.AppCoordinator.SelectedCurrentYear;
@@ -84,14 +85,12 @@ namespace CycleTracker
             } 
             else
             {
-                this.AppCoordinator.SelectedCurrentYear = currentYear;
+                this.AppCoordinator.SelectedPreviousYear = currentYear;
                 this.previousYearComboBox.SelectedItem = currentYear;
             }
             _initialising = false;
 
-            SetYearDataSource();
-            SetYearToDateDataSource();
-            SetMonthDataSource();
+            SetAllDataSources();
         }
 
         private void ImportData ()
@@ -112,9 +111,7 @@ namespace CycleTracker
 
             this.AppCoordinator.SelectedCurrentYear = (int)yearComboBox.SelectedValue;
 
-            SetYearDataSource();
-            SetYearToDateDataSource();
-            SetMonthDataSource();
+            SetAllDataSources();
         }
 
         private void monthComboBox_SelectedValueChanged(object sender, EventArgs e)
@@ -149,6 +146,14 @@ namespace CycleTracker
             this.longestRidePreviousMilesLabel.Text = current.LongestPreviousRideInMiles.ToString();
             this.longestRideTimePreviousLabel.Text = current.LongestPreviousRideTime.ToString();
 
+            SetDifferenceControl(totalRidesDifferenceLabel, current.TotalRideDifference);
+            SetDifferenceControl(totalTimeDifferenceLabel, current.TotalTimeDifference);
+            SetDifferenceControl(totalSpeedDifferenceLabel, current.TotalSpeedDifference);
+            SetDifferenceControl(totalDistanceDifferenceLabel, current.TotalDistanceDifference);
+            SetDifferenceControl(totalAscentFtDifferenceLabel, current.TotalAscentDifferenceFt);
+            SetDifferenceControl(totalAscentMDifferenceLabel, current.TotalAscentDifferenceMetres);
+            SetDifferenceControl(longestRideMilesDifferenceLabel, current.LongestRideDifference);
+            SetDifferenceControl(longestRideTimeDifferenceLabel, current.LongestTimeDifference);
         }
 
         private void SetYearDataSource ()
@@ -172,6 +177,15 @@ namespace CycleTracker
             this.totalAscentMPreviousYearLabel.Text = current.TotalPreviousAscentMetres.ToString();
             this.longestRideMilesPreviousYearLabel.Text = current.LongestPreviousRideInMiles.ToString();
             this.longestRideTimePreviousYearLabel.Text = current.LongestPreviousRideTime.ToString();
+
+            SetDifferenceControl(totalRidesYearDifferenceLabel, current.TotalRideDifference);
+            SetDifferenceControl(totalTimeYearDifferenceLabel, current.TotalTimeDifference);
+            SetDifferenceControl(averageSpeedYearDifferenceLabel, current.TotalSpeedDifference);
+            SetDifferenceControl(totalDistanceYearDifferenceLabel, current.TotalDistanceDifference);
+            SetDifferenceControl(totalAscentFtYearDifferenceLabel, current.TotalAscentDifferenceFt);
+            SetDifferenceControl(totalAscentMYearDifferenceLabel, current.TotalAscentDifferenceMetres);
+            SetDifferenceControl(longestRideMilesYearDifferenceLabel, current.LongestRideDifference);
+            SetDifferenceControl(longestRideTimeYearDifferenceLabel, current.LongestTimeDifference);
         }
 
         private void SetYearToDateDataSource()
@@ -196,13 +210,23 @@ namespace CycleTracker
             this.totalAscentMToPreviousDate.Text = current.TotalPreviousAscentMetres.ToString();
             this.longestRideMilesToPreviousDate.Text = current.LongestPreviousRideInMiles.ToString();
             this.longestRideTimeToPreviousDate.Text = current.LongestPreviousRideTime.ToString();
+
+            SetDifferenceControl(totalRidesToDateDifference, current.TotalRideDifference);
+            SetDifferenceControl(totalTimeToDateDifference, current.TotalTimeDifference);
+            SetDifferenceControl(averageSpeedToDateDifference, current.TotalSpeedDifference);
+            SetDifferenceControl(totalDistanceToDateDifference, current.TotalDistanceDifference);
+            SetDifferenceControl(totalAscentFtToDateDifference, current.TotalAscentDifferenceFt);
+            SetDifferenceControl(totalAscentMtToDateDiffernce, current.TotalAscentDifferenceMetres);
+            SetDifferenceControl(longestRideMilesToDateDifferenceLabel, current.LongestRideDifference);
+            SetDifferenceControl(longestRideTimeToDateDifference, current.LongestTimeDifference);
         }
 
         private void addRideButton_Click(object sender, EventArgs e)
         {
             AddRideForm addForm = new AddRideForm();
             addForm.ShowDialog();
-            SetMonthDataSource();
+            AppCoordinator.ResetRideData();
+            SetAllDataSources();
         }
 
         private void previousYearComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -220,6 +244,28 @@ namespace CycleTracker
         {
 
         }
+    
+        private void SetAllDataSources ()
+        {
+            SetMonthDataSource();
+            SetYearDataSource();
+            SetYearToDateDataSource();
+        }
 
+        private void SetDifferenceControl (Control control, int value)
+        {
+            SetDifferenceControl(control, value.ToString(), value < 0);
+        }
+
+        private void SetDifferenceControl(Control control, decimal value)
+        {
+            SetDifferenceControl(control, value.ToString(), value < 0);
+        }
+
+        private void SetDifferenceControl (Control control, string value, bool negative)
+        {
+            control.Text = value;
+            control.ForeColor = (negative) ? Color.Red : Color.Green;
+        }
     }
 }

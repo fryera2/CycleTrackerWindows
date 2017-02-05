@@ -94,6 +94,11 @@ namespace CycleTracker.BusinessObjects
             }
         }
 
+        public void ResetRideData ()
+        {
+            _filteredRides = null;
+        }
+
         public List<FilteredRide> GetFilteredRides ()
         {
             return FilteredRides.Where(r => ((DateTime)r.RideDate).Year == SelectedCurrentYear && ((DateTime)r.RideDate).Month == SelectedMonth).ToList();
