@@ -133,5 +133,23 @@ namespace CycleTracker.BusinessObjects
                                             ((DateTime)r.RideDate).Year == SelectedPreviousYear).ToList();
         }
 
+        public List<FilteredRide> GetFilteredRidesMonthToDate()
+        {
+            DateTime startDate = new DateTime(SelectedCurrentYear, DateTime.Now.Month, 1);
+            DateTime endDate = new DateTime(SelectedCurrentYear, DateTime.Now.Month, DateTime.Now.Day);
+
+            return FilteredRides.Where(r => ((DateTime)r.RideDate).CompareTo(startDate) >= 0 &&
+                                            ((DateTime)r.RideDate).CompareTo(endDate) <= 0).ToList();
+        }
+
+        public List<FilteredRide> GetPreviousFilteredRidesMonthToDate()
+        {
+            DateTime startDate = new DateTime(SelectedPreviousYear, DateTime.Now.Month, 1);
+            DateTime endDate = new DateTime(SelectedPreviousYear, DateTime.Now.Month, DateTime.Now.Day);
+
+            return FilteredRides.Where(r => ((DateTime)r.RideDate).CompareTo(startDate) >= 0 &&
+                                            ((DateTime)r.RideDate).CompareTo(endDate) <= 0).ToList();
+        }
+
     }
 }

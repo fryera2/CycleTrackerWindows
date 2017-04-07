@@ -41,6 +41,43 @@
             this.AscentGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BikeGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CommentsGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.longestRideTimeDifferenceMonthTD = new System.Windows.Forms.Label();
+            this.longestRideDifferenceMonthTD = new System.Windows.Forms.Label();
+            this.totalAscentDifferenceMMonthToDate = new System.Windows.Forms.Label();
+            this.totalAscentFDifferenceMonthTD = new System.Windows.Forms.Label();
+            this.totalDistanceDifferenceMonthTD = new System.Windows.Forms.Label();
+            this.totalTimeDifferenceMonthTD = new System.Windows.Forms.Label();
+            this.averageSpeedDifferenceMonthTD = new System.Windows.Forms.Label();
+            this.totalRidesDifferenceMonthTD = new System.Windows.Forms.Label();
+            this.longestRideTimePreviousMonthTD = new System.Windows.Forms.Label();
+            this.longestRideTimeMonthTD = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.longestRidePreviousMonthTD = new System.Windows.Forms.Label();
+            this.longestRideMonthTD = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.averageSpeedPreviousMonthTD = new System.Windows.Forms.Label();
+            this.averageSpeedMonthTD = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.totalAscentMPreviousMonthTD = new System.Windows.Forms.Label();
+            this.totalAscentFPreviousMonthTD = new System.Windows.Forms.Label();
+            this.totalDistancePreviouusMonthTD = new System.Windows.Forms.Label();
+            this.totalTimePreviousMonthTD = new System.Windows.Forms.Label();
+            this.totalRidesPreviousMonthTD = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
+            this.totalAscentMMonthTD = new System.Windows.Forms.Label();
+            this.totalAscentFtMonthTD = new System.Windows.Forms.Label();
+            this.totalDistanceMonthTD = new System.Windows.Forms.Label();
+            this.totalTimeMonthTD = new System.Windows.Forms.Label();
+            this.totalRidesMonthTD = new System.Windows.Forms.Label();
+            this.label69 = new System.Windows.Forms.Label();
+            this.label70 = new System.Windows.Forms.Label();
+            this.label71 = new System.Windows.Forms.Label();
+            this.label72 = new System.Windows.Forms.Label();
+            this.label73 = new System.Windows.Forms.Label();
+            this.label74 = new System.Windows.Forms.Label();
+            this.label75 = new System.Windows.Forms.Label();
             this.summaryPanel = new System.Windows.Forms.Panel();
             this.label27 = new System.Windows.Forms.Label();
             this.longestRideTimeDifferenceLabel = new System.Windows.Forms.Label();
@@ -165,8 +202,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importRecordsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.addRideButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -175,6 +210,7 @@
             this.ridesGroupBox.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ridesGrid)).BeginInit();
+            this.panel5.SuspendLayout();
             this.summaryPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -225,6 +261,7 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.ridesGrid);
+            this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.summaryPanel);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(10, 72);
@@ -244,12 +281,12 @@
             this.BikeGridColumn,
             this.CommentsGridColumn});
             this.ridesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ridesGrid.Location = new System.Drawing.Point(614, 0);
+            this.ridesGrid.Location = new System.Drawing.Point(1228, 0);
             this.ridesGrid.Name = "ridesGrid";
             this.ridesGrid.RowHeadersVisible = false;
             this.ridesGrid.RowTemplate.Height = 24;
             this.ridesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ridesGrid.Size = new System.Drawing.Size(697, 374);
+            this.ridesGrid.Size = new System.Drawing.Size(83, 374);
             this.ridesGrid.TabIndex = 2;
             // 
             // RideDateGridColumn
@@ -296,6 +333,413 @@
             this.CommentsGridColumn.DataPropertyName = "Comments";
             this.CommentsGridColumn.HeaderText = "Comments";
             this.CommentsGridColumn.Name = "CommentsGridColumn";
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.label2);
+            this.panel5.Controls.Add(this.longestRideTimeDifferenceMonthTD);
+            this.panel5.Controls.Add(this.longestRideDifferenceMonthTD);
+            this.panel5.Controls.Add(this.totalAscentDifferenceMMonthToDate);
+            this.panel5.Controls.Add(this.totalAscentFDifferenceMonthTD);
+            this.panel5.Controls.Add(this.totalDistanceDifferenceMonthTD);
+            this.panel5.Controls.Add(this.totalTimeDifferenceMonthTD);
+            this.panel5.Controls.Add(this.averageSpeedDifferenceMonthTD);
+            this.panel5.Controls.Add(this.totalRidesDifferenceMonthTD);
+            this.panel5.Controls.Add(this.longestRideTimePreviousMonthTD);
+            this.panel5.Controls.Add(this.longestRideTimeMonthTD);
+            this.panel5.Controls.Add(this.label33);
+            this.panel5.Controls.Add(this.longestRidePreviousMonthTD);
+            this.panel5.Controls.Add(this.longestRideMonthTD);
+            this.panel5.Controls.Add(this.label42);
+            this.panel5.Controls.Add(this.averageSpeedPreviousMonthTD);
+            this.panel5.Controls.Add(this.averageSpeedMonthTD);
+            this.panel5.Controls.Add(this.label48);
+            this.panel5.Controls.Add(this.totalAscentMPreviousMonthTD);
+            this.panel5.Controls.Add(this.totalAscentFPreviousMonthTD);
+            this.panel5.Controls.Add(this.totalDistancePreviouusMonthTD);
+            this.panel5.Controls.Add(this.totalTimePreviousMonthTD);
+            this.panel5.Controls.Add(this.totalRidesPreviousMonthTD);
+            this.panel5.Controls.Add(this.label55);
+            this.panel5.Controls.Add(this.totalAscentMMonthTD);
+            this.panel5.Controls.Add(this.totalAscentFtMonthTD);
+            this.panel5.Controls.Add(this.totalDistanceMonthTD);
+            this.panel5.Controls.Add(this.totalTimeMonthTD);
+            this.panel5.Controls.Add(this.totalRidesMonthTD);
+            this.panel5.Controls.Add(this.label69);
+            this.panel5.Controls.Add(this.label70);
+            this.panel5.Controls.Add(this.label71);
+            this.panel5.Controls.Add(this.label72);
+            this.panel5.Controls.Add(this.label73);
+            this.panel5.Controls.Add(this.label74);
+            this.panel5.Controls.Add(this.label75);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel5.Location = new System.Drawing.Point(614, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(614, 374);
+            this.panel5.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label2.Location = new System.Drawing.Point(488, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 20);
+            this.label2.TabIndex = 36;
+            this.label2.Text = "Difference";
+            // 
+            // longestRideTimeDifferenceMonthTD
+            // 
+            this.longestRideTimeDifferenceMonthTD.AutoSize = true;
+            this.longestRideTimeDifferenceMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.longestRideTimeDifferenceMonthTD.Location = new System.Drawing.Point(488, 334);
+            this.longestRideTimeDifferenceMonthTD.Name = "longestRideTimeDifferenceMonthTD";
+            this.longestRideTimeDifferenceMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.longestRideTimeDifferenceMonthTD.TabIndex = 35;
+            this.longestRideTimeDifferenceMonthTD.Text = "label10";
+            // 
+            // longestRideDifferenceMonthTD
+            // 
+            this.longestRideDifferenceMonthTD.AutoSize = true;
+            this.longestRideDifferenceMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.longestRideDifferenceMonthTD.Location = new System.Drawing.Point(488, 294);
+            this.longestRideDifferenceMonthTD.Name = "longestRideDifferenceMonthTD";
+            this.longestRideDifferenceMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.longestRideDifferenceMonthTD.TabIndex = 34;
+            this.longestRideDifferenceMonthTD.Text = "label10";
+            // 
+            // totalAscentDifferenceMMonthToDate
+            // 
+            this.totalAscentDifferenceMMonthToDate.AutoSize = true;
+            this.totalAscentDifferenceMMonthToDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalAscentDifferenceMMonthToDate.Location = new System.Drawing.Point(488, 257);
+            this.totalAscentDifferenceMMonthToDate.Name = "totalAscentDifferenceMMonthToDate";
+            this.totalAscentDifferenceMMonthToDate.Size = new System.Drawing.Size(69, 20);
+            this.totalAscentDifferenceMMonthToDate.TabIndex = 33;
+            this.totalAscentDifferenceMMonthToDate.Text = "label10";
+            // 
+            // totalAscentFDifferenceMonthTD
+            // 
+            this.totalAscentFDifferenceMonthTD.AutoSize = true;
+            this.totalAscentFDifferenceMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalAscentFDifferenceMonthTD.Location = new System.Drawing.Point(488, 217);
+            this.totalAscentFDifferenceMonthTD.Name = "totalAscentFDifferenceMonthTD";
+            this.totalAscentFDifferenceMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.totalAscentFDifferenceMonthTD.TabIndex = 32;
+            this.totalAscentFDifferenceMonthTD.Text = "label10";
+            // 
+            // totalDistanceDifferenceMonthTD
+            // 
+            this.totalDistanceDifferenceMonthTD.AutoSize = true;
+            this.totalDistanceDifferenceMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalDistanceDifferenceMonthTD.Location = new System.Drawing.Point(488, 177);
+            this.totalDistanceDifferenceMonthTD.Name = "totalDistanceDifferenceMonthTD";
+            this.totalDistanceDifferenceMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.totalDistanceDifferenceMonthTD.TabIndex = 31;
+            this.totalDistanceDifferenceMonthTD.Text = "label10";
+            // 
+            // totalTimeDifferenceMonthTD
+            // 
+            this.totalTimeDifferenceMonthTD.AutoSize = true;
+            this.totalTimeDifferenceMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalTimeDifferenceMonthTD.Location = new System.Drawing.Point(488, 97);
+            this.totalTimeDifferenceMonthTD.Name = "totalTimeDifferenceMonthTD";
+            this.totalTimeDifferenceMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.totalTimeDifferenceMonthTD.TabIndex = 30;
+            this.totalTimeDifferenceMonthTD.Text = "label10";
+            // 
+            // averageSpeedDifferenceMonthTD
+            // 
+            this.averageSpeedDifferenceMonthTD.AutoSize = true;
+            this.averageSpeedDifferenceMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.averageSpeedDifferenceMonthTD.Location = new System.Drawing.Point(488, 137);
+            this.averageSpeedDifferenceMonthTD.Name = "averageSpeedDifferenceMonthTD";
+            this.averageSpeedDifferenceMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.averageSpeedDifferenceMonthTD.TabIndex = 29;
+            this.averageSpeedDifferenceMonthTD.Text = "label10";
+            // 
+            // totalRidesDifferenceMonthTD
+            // 
+            this.totalRidesDifferenceMonthTD.AutoSize = true;
+            this.totalRidesDifferenceMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalRidesDifferenceMonthTD.Location = new System.Drawing.Point(488, 57);
+            this.totalRidesDifferenceMonthTD.Name = "totalRidesDifferenceMonthTD";
+            this.totalRidesDifferenceMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.totalRidesDifferenceMonthTD.TabIndex = 28;
+            this.totalRidesDifferenceMonthTD.Text = "label10";
+            // 
+            // longestRideTimePreviousMonthTD
+            // 
+            this.longestRideTimePreviousMonthTD.AutoSize = true;
+            this.longestRideTimePreviousMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.longestRideTimePreviousMonthTD.Location = new System.Drawing.Point(362, 334);
+            this.longestRideTimePreviousMonthTD.Name = "longestRideTimePreviousMonthTD";
+            this.longestRideTimePreviousMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.longestRideTimePreviousMonthTD.TabIndex = 27;
+            this.longestRideTimePreviousMonthTD.Text = "label14";
+            // 
+            // longestRideTimeMonthTD
+            // 
+            this.longestRideTimeMonthTD.AutoSize = true;
+            this.longestRideTimeMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.longestRideTimeMonthTD.Location = new System.Drawing.Point(228, 334);
+            this.longestRideTimeMonthTD.Name = "longestRideTimeMonthTD";
+            this.longestRideTimeMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.longestRideTimeMonthTD.TabIndex = 26;
+            this.longestRideTimeMonthTD.Text = "label14";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(11, 334);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(151, 20);
+            this.label33.TabIndex = 25;
+            this.label33.Text = "Longest ride (time)";
+            // 
+            // longestRidePreviousMonthTD
+            // 
+            this.longestRidePreviousMonthTD.AutoSize = true;
+            this.longestRidePreviousMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.longestRidePreviousMonthTD.Location = new System.Drawing.Point(361, 294);
+            this.longestRidePreviousMonthTD.Name = "longestRidePreviousMonthTD";
+            this.longestRidePreviousMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.longestRidePreviousMonthTD.TabIndex = 24;
+            this.longestRidePreviousMonthTD.Text = "label14";
+            // 
+            // longestRideMonthTD
+            // 
+            this.longestRideMonthTD.AutoSize = true;
+            this.longestRideMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.longestRideMonthTD.Location = new System.Drawing.Point(227, 294);
+            this.longestRideMonthTD.Name = "longestRideMonthTD";
+            this.longestRideMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.longestRideMonthTD.TabIndex = 23;
+            this.longestRideMonthTD.Text = "label14";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.Location = new System.Drawing.Point(11, 294);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(159, 20);
+            this.label42.TabIndex = 6;
+            this.label42.Text = "Longest ride (miles)";
+            // 
+            // averageSpeedPreviousMonthTD
+            // 
+            this.averageSpeedPreviousMonthTD.AutoSize = true;
+            this.averageSpeedPreviousMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.averageSpeedPreviousMonthTD.Location = new System.Drawing.Point(361, 137);
+            this.averageSpeedPreviousMonthTD.Name = "averageSpeedPreviousMonthTD";
+            this.averageSpeedPreviousMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.averageSpeedPreviousMonthTD.TabIndex = 22;
+            this.averageSpeedPreviousMonthTD.Text = "label10";
+            // 
+            // averageSpeedMonthTD
+            // 
+            this.averageSpeedMonthTD.AutoSize = true;
+            this.averageSpeedMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.averageSpeedMonthTD.Location = new System.Drawing.Point(227, 137);
+            this.averageSpeedMonthTD.Name = "averageSpeedMonthTD";
+            this.averageSpeedMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.averageSpeedMonthTD.TabIndex = 21;
+            this.averageSpeedMonthTD.Text = "label11";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label48.Location = new System.Drawing.Point(11, 137);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(120, 20);
+            this.label48.TabIndex = 20;
+            this.label48.Text = "Average speed";
+            // 
+            // totalAscentMPreviousMonthTD
+            // 
+            this.totalAscentMPreviousMonthTD.AutoSize = true;
+            this.totalAscentMPreviousMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalAscentMPreviousMonthTD.Location = new System.Drawing.Point(361, 257);
+            this.totalAscentMPreviousMonthTD.Name = "totalAscentMPreviousMonthTD";
+            this.totalAscentMPreviousMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.totalAscentMPreviousMonthTD.TabIndex = 19;
+            this.totalAscentMPreviousMonthTD.Text = "label14";
+            // 
+            // totalAscentFPreviousMonthTD
+            // 
+            this.totalAscentFPreviousMonthTD.AutoSize = true;
+            this.totalAscentFPreviousMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalAscentFPreviousMonthTD.Location = new System.Drawing.Point(361, 217);
+            this.totalAscentFPreviousMonthTD.Name = "totalAscentFPreviousMonthTD";
+            this.totalAscentFPreviousMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.totalAscentFPreviousMonthTD.TabIndex = 18;
+            this.totalAscentFPreviousMonthTD.Text = "label13";
+            // 
+            // totalDistancePreviouusMonthTD
+            // 
+            this.totalDistancePreviouusMonthTD.AutoSize = true;
+            this.totalDistancePreviouusMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalDistancePreviouusMonthTD.Location = new System.Drawing.Point(361, 177);
+            this.totalDistancePreviouusMonthTD.Name = "totalDistancePreviouusMonthTD";
+            this.totalDistancePreviouusMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.totalDistancePreviouusMonthTD.TabIndex = 17;
+            this.totalDistancePreviouusMonthTD.Text = "label12";
+            // 
+            // totalTimePreviousMonthTD
+            // 
+            this.totalTimePreviousMonthTD.AutoSize = true;
+            this.totalTimePreviousMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalTimePreviousMonthTD.Location = new System.Drawing.Point(362, 97);
+            this.totalTimePreviousMonthTD.Name = "totalTimePreviousMonthTD";
+            this.totalTimePreviousMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.totalTimePreviousMonthTD.TabIndex = 16;
+            this.totalTimePreviousMonthTD.Text = "label11";
+            // 
+            // totalRidesPreviousMonthTD
+            // 
+            this.totalRidesPreviousMonthTD.AutoSize = true;
+            this.totalRidesPreviousMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalRidesPreviousMonthTD.Location = new System.Drawing.Point(362, 57);
+            this.totalRidesPreviousMonthTD.Name = "totalRidesPreviousMonthTD";
+            this.totalRidesPreviousMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.totalRidesPreviousMonthTD.TabIndex = 15;
+            this.totalRidesPreviousMonthTD.Text = "label10";
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label55.Location = new System.Drawing.Point(374, 57);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(0, 20);
+            this.label55.TabIndex = 14;
+            // 
+            // totalAscentMMonthTD
+            // 
+            this.totalAscentMMonthTD.AutoSize = true;
+            this.totalAscentMMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalAscentMMonthTD.Location = new System.Drawing.Point(227, 257);
+            this.totalAscentMMonthTD.Name = "totalAscentMMonthTD";
+            this.totalAscentMMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.totalAscentMMonthTD.TabIndex = 11;
+            this.totalAscentMMonthTD.Text = "label14";
+            // 
+            // totalAscentFtMonthTD
+            // 
+            this.totalAscentFtMonthTD.AutoSize = true;
+            this.totalAscentFtMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalAscentFtMonthTD.Location = new System.Drawing.Point(227, 217);
+            this.totalAscentFtMonthTD.Name = "totalAscentFtMonthTD";
+            this.totalAscentFtMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.totalAscentFtMonthTD.TabIndex = 10;
+            this.totalAscentFtMonthTD.Text = "label13";
+            // 
+            // totalDistanceMonthTD
+            // 
+            this.totalDistanceMonthTD.AutoSize = true;
+            this.totalDistanceMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalDistanceMonthTD.Location = new System.Drawing.Point(227, 177);
+            this.totalDistanceMonthTD.Name = "totalDistanceMonthTD";
+            this.totalDistanceMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.totalDistanceMonthTD.TabIndex = 9;
+            this.totalDistanceMonthTD.Text = "label12";
+            // 
+            // totalTimeMonthTD
+            // 
+            this.totalTimeMonthTD.AutoSize = true;
+            this.totalTimeMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalTimeMonthTD.Location = new System.Drawing.Point(228, 97);
+            this.totalTimeMonthTD.Name = "totalTimeMonthTD";
+            this.totalTimeMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.totalTimeMonthTD.TabIndex = 8;
+            this.totalTimeMonthTD.Text = "label11";
+            // 
+            // totalRidesMonthTD
+            // 
+            this.totalRidesMonthTD.AutoSize = true;
+            this.totalRidesMonthTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalRidesMonthTD.Location = new System.Drawing.Point(228, 57);
+            this.totalRidesMonthTD.Name = "totalRidesMonthTD";
+            this.totalRidesMonthTD.Size = new System.Drawing.Size(69, 20);
+            this.totalRidesMonthTD.TabIndex = 7;
+            this.totalRidesMonthTD.Text = "label10";
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label69.Location = new System.Drawing.Point(240, 57);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(0, 20);
+            this.label69.TabIndex = 6;
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label70.Location = new System.Drawing.Point(11, 257);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(132, 20);
+            this.label70.TabIndex = 5;
+            this.label70.Text = "Total ascent (m)";
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label71.Location = new System.Drawing.Point(11, 217);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(128, 20);
+            this.label71.TabIndex = 4;
+            this.label71.Text = "Total ascent (ft)";
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label72.Location = new System.Drawing.Point(11, 177);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(165, 20);
+            this.label72.TabIndex = 3;
+            this.label72.Text = "Total distance ridden";
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label73.Location = new System.Drawing.Point(11, 97);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(175, 20);
+            this.label73.TabIndex = 2;
+            this.label73.Text = "Total time spent riding";
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label74.Location = new System.Drawing.Point(11, 57);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(173, 20);
+            this.label74.TabIndex = 1;
+            this.label74.Text = "Total number of rides:";
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label75.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.label75.Location = new System.Drawing.Point(9, 9);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(174, 29);
+            this.label75.TabIndex = 0;
+            this.label75.Text = "Month to Date";
+            this.label75.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // summaryPanel
             // 
@@ -1163,12 +1607,11 @@
             // label68
             // 
             this.label68.AutoSize = true;
-            this.label68.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label68.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label68.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.label68.Location = new System.Drawing.Point(5, 10);
             this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(160, 31);
+            this.label68.Size = new System.Drawing.Size(158, 29);
             this.label68.TabIndex = 1;
             this.label68.Text = "Year to Date";
             this.label68.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1637,8 +2080,7 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.importToolStripMenuItem});
+            this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1345, 28);
@@ -1658,21 +2100,6 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(108, 26);
             this.exitToolStripMenuItem.Text = "E&xit";
-            // 
-            // importToolStripMenuItem
-            // 
-            this.importToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.importRecordsMenu});
-            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(66, 24);
-            this.importToolStripMenuItem.Text = "&Import";
-            // 
-            // importRecordsMenu
-            // 
-            this.importRecordsMenu.Name = "importRecordsMenu";
-            this.importRecordsMenu.Size = new System.Drawing.Size(186, 26);
-            this.importRecordsMenu.Text = "Import &Records";
-            this.importRecordsMenu.Click += new System.EventHandler(this.importRecordsMenu_Click);
             // 
             // toolStrip1
             // 
@@ -1722,6 +2149,8 @@
             this.ridesGroupBox.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ridesGrid)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.summaryPanel.ResumeLayout(false);
             this.summaryPanel.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -1752,8 +2181,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem importRecordsMenu;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox monthComboBox;
@@ -1885,6 +2312,43 @@
         private System.Windows.Forms.Label totalTimeYearDifferenceLabel;
         private System.Windows.Forms.Label averageSpeedYearDifferenceLabel;
         private System.Windows.Forms.Label totalRidesYearDifferenceLabel;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label longestRideTimeDifferenceMonthTD;
+        private System.Windows.Forms.Label longestRideDifferenceMonthTD;
+        private System.Windows.Forms.Label totalAscentDifferenceMMonthToDate;
+        private System.Windows.Forms.Label totalAscentFDifferenceMonthTD;
+        private System.Windows.Forms.Label totalDistanceDifferenceMonthTD;
+        private System.Windows.Forms.Label totalTimeDifferenceMonthTD;
+        private System.Windows.Forms.Label averageSpeedDifferenceMonthTD;
+        private System.Windows.Forms.Label totalRidesDifferenceMonthTD;
+        private System.Windows.Forms.Label longestRideTimePreviousMonthTD;
+        private System.Windows.Forms.Label longestRideTimeMonthTD;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label longestRidePreviousMonthTD;
+        private System.Windows.Forms.Label longestRideMonthTD;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Label averageSpeedPreviousMonthTD;
+        private System.Windows.Forms.Label averageSpeedMonthTD;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label totalAscentMPreviousMonthTD;
+        private System.Windows.Forms.Label totalAscentFPreviousMonthTD;
+        private System.Windows.Forms.Label totalDistancePreviouusMonthTD;
+        private System.Windows.Forms.Label totalTimePreviousMonthTD;
+        private System.Windows.Forms.Label totalRidesPreviousMonthTD;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.Label totalAscentMMonthTD;
+        private System.Windows.Forms.Label totalAscentFtMonthTD;
+        private System.Windows.Forms.Label totalDistanceMonthTD;
+        private System.Windows.Forms.Label totalTimeMonthTD;
+        private System.Windows.Forms.Label totalRidesMonthTD;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.Label label75;
     }
 }
 

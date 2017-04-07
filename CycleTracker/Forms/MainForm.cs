@@ -121,6 +121,7 @@ namespace CycleTracker
             this.AppCoordinator.SelectedMonth = (int)monthComboBox.SelectedIndex + 1;
 
             SetMonthDataSource();
+            SetMonthToDateDataSource();
         }
 
         private void SetMonthDataSource()
@@ -154,6 +155,38 @@ namespace CycleTracker
             SetDifferenceControl(totalAscentMDifferenceLabel, current.TotalAscentDifferenceMetres);
             SetDifferenceControl(longestRideMilesDifferenceLabel, current.LongestRideDifference);
             SetDifferenceControl(longestRideTimeDifferenceLabel, current.LongestTimeDifference);
+        }
+
+        private void SetMonthToDateDataSource()
+        {
+            CombinedStatsObject current = new CombinedStatsObject(AppCoordinator.GetFilteredRidesMonthToDate(), AppCoordinator.GetPreviousFilteredRidesMonthToDate());
+
+            this.totalRidesMonthTD.Text = current.TotalRides.ToString();
+            this.totalTimeMonthTD.Text = current.TotalTime.ToString();
+            this.averageSpeedMonthTD.Text = current.AverageSpeed.ToString();
+            this.totalDistanceMonthTD.Text = current.TotalDistance.ToString();
+            this.totalAscentFtMonthTD.Text = current.TotalAscentFt.ToString();
+            this.totalAscentMMonthTD.Text = current.TotalAscentMetres.ToString();
+            this.longestRideMonthTD.Text = current.LongestRideMiles.ToString();
+            this.longestRideTimeMonthTD.Text = current.LongestRideTime.ToString();
+
+            this.totalRidesPreviousMonthTD.Text = current.TotalPreviousRides.ToString();
+            this.totalTimePreviousMonthTD.Text = current.TotalPreviousTime.ToString();
+            this.averageSpeedPreviousMonthTD.Text = current.AveragePreviousSpeed.ToString();
+            this.totalDistancePreviouusMonthTD.Text = current.TotalPreviousDistance.ToString();
+            this.totalAscentFPreviousMonthTD.Text = current.TotalPreviousAscentFt.ToString();
+            this.totalAscentMPreviousMonthTD.Text = current.TotalPreviousAscentMetres.ToString();
+            this.longestRidePreviousMonthTD.Text = current.LongestPreviousRideInMiles.ToString();
+            this.longestRideTimePreviousMonthTD.Text = current.LongestPreviousRideTime.ToString();
+
+            SetDifferenceControl(totalRidesDifferenceMonthTD, current.TotalRideDifference);
+            SetDifferenceControl(totalTimeDifferenceMonthTD, current.TotalTimeDifference);
+            SetDifferenceControl(averageSpeedDifferenceMonthTD, current.TotalSpeedDifference);
+            SetDifferenceControl(totalDistanceDifferenceMonthTD, current.TotalDistanceDifference);
+            SetDifferenceControl(totalAscentFDifferenceMonthTD, current.TotalAscentDifferenceFt);
+            SetDifferenceControl(totalAscentDifferenceMMonthToDate, current.TotalAscentDifferenceMetres);
+            SetDifferenceControl(longestRideDifferenceMonthTD, current.LongestRideDifference);
+            SetDifferenceControl(longestRideTimeDifferenceMonthTD, current.LongestTimeDifference);
         }
 
         private void SetYearDataSource ()
@@ -248,6 +281,7 @@ namespace CycleTracker
         private void SetAllDataSources ()
         {
             SetMonthDataSource();
+            SetMonthToDateDataSource();
             SetYearDataSource();
             SetYearToDateDataSource();
         }
