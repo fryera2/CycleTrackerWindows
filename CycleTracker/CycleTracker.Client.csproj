@@ -79,6 +79,12 @@
     <Compile Include="BaseForms\RideBaseForm.Designer.cs">
       <DependentUpon>RideBaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\StatisticsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\StatisticsControl.Designer.cs">
+      <DependentUpon>StatisticsControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AddRideForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BaseForms\RideBaseForm.resx">
       <DependentUpon>RideBaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\StatisticsControl.resx">
+      <DependentUpon>StatisticsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddRideForm.resx">
       <DependentUpon>AddRideForm.cs</DependentUpon>
@@ -156,9 +165,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Icons\bicycle.png" />
   </ItemGroup>

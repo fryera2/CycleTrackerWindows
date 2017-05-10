@@ -65,6 +65,14 @@ namespace CycleTracker.BusinessObjects
             }
         }
 
+        public decimal TotalAscentMiles
+        {
+            get
+            {
+                return (TotalAscentMetres != 0) ? Convert.ToDecimal(Math.Round(TotalAscentMetres / (decimal)1548.0, 2)) : 0;
+            }
+        }
+
         public decimal LongestRideMiles
         {
             get
@@ -78,6 +86,22 @@ namespace CycleTracker.BusinessObjects
             get
             {
                 return Convert.ToDecimal (_rides.Max(r => r.RideTime));
+            }
+        }
+
+        public decimal PlusMinusFifteen
+        {
+            get
+            {
+                return Convert.ToDecimal (TotalDistance - TotalTime * (decimal)15.0);
+            }
+        }
+
+        public decimal PlusMinusFifteenFive
+        {
+            get
+            {
+                return Convert.ToDecimal(TotalDistance - TotalTime * (decimal)15.5);
             }
         }
 
@@ -129,6 +153,14 @@ namespace CycleTracker.BusinessObjects
             }
         }
 
+        public decimal TotalPreviousAscentMiles
+        {
+            get
+            {
+                return (TotalPreviousAscentMetres != 0) ? Convert.ToDecimal(Math.Round(TotalPreviousAscentMetres / (decimal)1548.0, 2)) : 0;
+            }
+        }
+
         public decimal LongestPreviousRideInMiles
         {
             get
@@ -142,6 +174,22 @@ namespace CycleTracker.BusinessObjects
             get
             {
                 return Convert.ToDecimal(_previousRides.Max(r => r.RideTime));
+            }
+        }
+
+        public decimal PlusMinusFifteenPrevious
+        {
+            get
+            {
+                return Convert.ToDecimal(TotalPreviousDistance - TotalPreviousTime * (decimal)15.0);
+            }
+        }
+
+        public decimal PlusMinusFifteenFivePrevious
+        {
+            get
+            {
+                return Convert.ToDecimal(TotalPreviousDistance - TotalPreviousTime * (decimal)15.5);
             }
         }
 
@@ -193,6 +241,14 @@ namespace CycleTracker.BusinessObjects
             }
         }
 
+        public decimal TotalAscentDifferenceMiles
+        {
+            get
+            {
+                return TotalAscentMiles - TotalPreviousAscentMiles;
+            }
+        }
+
         public decimal LongestRideDifference
         {
             get
@@ -206,6 +262,22 @@ namespace CycleTracker.BusinessObjects
             get
             {
                 return LongestRideTime - LongestPreviousRideTime;
+            }
+        }
+
+        public decimal PlusMinusFifteenDifference
+        {
+            get
+            {
+                return PlusMinusFifteen - PlusMinusFifteenPrevious;
+            }
+        }
+
+        public decimal PlusMinusFifteenFiveDifference
+        {
+            get
+            {
+                return PlusMinusFifteenFive - PlusMinusFifteenFivePrevious;
             }
         }
 
