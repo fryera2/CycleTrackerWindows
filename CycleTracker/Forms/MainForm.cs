@@ -1,4 +1,5 @@
 ﻿using CycleTracker.BusinessObjects;
+using CycleTracker.Database.Database;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,6 +54,7 @@ namespace CycleTracker
             this.monthComboBox.DataBindings.Clear();
             this.yearComboBox.DataBindings.Clear();
             this.previousYearComboBox.DataBindings.Clear();
+            this.bikeComboBox.DataBindings.Clear();
         }
 
         protected override void ApplyDataBindings()
@@ -60,6 +62,7 @@ namespace CycleTracker
             this.monthComboBox.DataBindings.Add(new Binding("Text", AppCoordinator, "SelectedMonth"));
             this.yearComboBox.DataBindings.Add(new Binding("Text", AppCoordinator, "SelectedCurrentYear"));
             this.previousYearComboBox.DataBindings.Add(new Binding("Text", AppCoordinator, "SelectedPreviousYear"));
+            this.bikeComboBox.DataBindings.Add(new Binding("Text", AppCoordinator, "SelectedBike"));
         }
 
         protected override void Initialise()
@@ -88,6 +91,10 @@ namespace CycleTracker
                 this.AppCoordinator.SelectedPreviousYear = currentYear;
                 this.previousYearComboBox.SelectedItem = currentYear;
             }
+            this.bikeComboBox.DataSource = AppCoordinator.Bikes;
+            this.AppCoordinator.SelectedBike = AppCoordinator.Bikes.Where(b => b.BikeName == "All").Select(b => b.BikeID).Single();
+            this.bikeComboBox.SelectedValue = this.AppCoordinator.SelectedBike;
+
             _initialising = false;
 
             SetAllDataSources();
@@ -116,26 +123,30 @@ namespace CycleTracker
         {
             this.ridesGrid.DataSource = AppCoordinator.GetFilteredRides();
 
-            CombinedStatsObject current = new CombinedStatsObject(AppCoordinator.GetFilteredRides(), AppCoordinator.GetPreviousFilteredRides());
+            CombinedStatsObject current = new CombinedStatsObject(AppCoordinator.GetFilteredRides(), AppCoordinator.GetPreviousFilteredRides(),
+                                                                  AppCoordinator.SelectedCurrentYear, AppCoordinator.SelectedPreviousYear);
             montlySummaryControl.SetDataSource(current);
         }
 
         private void SetMonthToDateDataSource()
         {
-            CombinedStatsObject current = new CombinedStatsObject(AppCoordinator.GetFilteredRidesMonthToDate(), AppCoordinator.GetPreviousFilteredRidesMonthToDate());
+            CombinedStatsObject current = new CombinedStatsObject(AppCoordinator.GetFilteredRidesMonthToDate(), AppCoordinator.GetPreviousFilteredRidesMonthToDate(),
+                                                                  AppCoordinator.SelectedCurrentYear, AppCoordinator.SelectedPreviousYear);
             monthToDateSummaryControl.SetDataSource(current);
         }
 
         private void SetYearDataSource ()
         {
-            CombinedStatsObject current = new CombinedStatsObject(AppCoordinator.GetFilteredRidesForYear(), AppCoordinator.GetPreviousFilteredRidesForYear());
+            CombinedStatsObject current = new CombinedStatsObject(AppCoordinator.GetFilteredRidesForYear(), AppCoordinator.GetPreviousFilteredRidesForYear(),
+                                                                  AppCoordinator.SelectedCurrentYear, AppCoordinator.SelectedPreviousYear);
             yearlySummaryControl.SetDataSource(current);
             
         }
 
         private void SetYearToDateDataSource()
         {
-            CombinedStatsObject current = new CombinedStatsObject(AppCoordinator.GetFilteredRidesToDate(), AppCoordinator.GetPreviousRidesToDate());
+            CombinedStatsObject current = new CombinedStatsObject(AppCoordinator.GetFilteredRidesToDate(), AppCoordinator.GetPreviousRidesToDate(),
+                                                                  AppCoordinator.SelectedCurrentYear, AppCoordinator.SelectedPreviousYear);
             yearToDateSummaryControl.SetDataSource(current);
         }
 
@@ -192,6 +203,15 @@ namespace CycleTracker
             this.montlySummaryControl.SetTitle("Monthly Summary");
             this.monthToDateSummaryControl.SetTitle("Month to Date");
 
+        }
+
+        private void bikeComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (_initialising) { return; }
+
+            AppCoordinator.SelectedBike = Convert.ToInt32(bikeComboBox.SelectedValue);
+            AppCoordinator.ResetRideData();
+            SetAllDataSources();
         }
     }
 }

@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -53,6 +51,8 @@
             this.yearToDateSummaryControl = new CycleTracker.Controls.StatisticsControl();
             this.yearlySummaryControl = new CycleTracker.Controls.StatisticsControl();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.bikeComboBox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.previousYearComboBox = new System.Windows.Forms.ComboBox();
             this.yearComboBox = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -125,14 +125,6 @@
             // 
             // ridesGrid
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ridesGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.ridesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ridesGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.RideDateGridColumn,
@@ -142,14 +134,6 @@
             this.AscentGridColumn,
             this.BikeGridColumn,
             this.CommentsGridColumn});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ridesGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.ridesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ridesGrid.Location = new System.Drawing.Point(1225, 0);
             this.ridesGrid.Name = "ridesGrid";
@@ -323,6 +307,8 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.LightGray;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.bikeComboBox);
+            this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.previousYearComboBox);
             this.panel3.Controls.Add(this.yearComboBox);
             this.panel3.Controls.Add(this.label15);
@@ -334,11 +320,32 @@
             this.panel3.TabIndex = 1;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
+            // bikeComboBox
+            // 
+            this.bikeComboBox.DisplayMember = "BikeName";
+            this.bikeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.bikeComboBox.FormattingEnabled = true;
+            this.bikeComboBox.Location = new System.Drawing.Point(346, 6);
+            this.bikeComboBox.Name = "bikeComboBox";
+            this.bikeComboBox.Size = new System.Drawing.Size(258, 28);
+            this.bikeComboBox.TabIndex = 8;
+            this.bikeComboBox.ValueMember = "BikeId";
+            this.bikeComboBox.SelectedValueChanged += new System.EventHandler(this.bikeComboBox_SelectedValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(298, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 20);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Bike";
+            // 
             // previousYearComboBox
             // 
             this.previousYearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.previousYearComboBox.FormattingEnabled = true;
-            this.previousYearComboBox.Location = new System.Drawing.Point(375, 3);
+            this.previousYearComboBox.Location = new System.Drawing.Point(159, 6);
             this.previousYearComboBox.Name = "previousYearComboBox";
             this.previousYearComboBox.Size = new System.Drawing.Size(121, 28);
             this.previousYearComboBox.TabIndex = 6;
@@ -348,7 +355,7 @@
             // 
             this.yearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.yearComboBox.FormattingEnabled = true;
-            this.yearComboBox.Location = new System.Drawing.Point(232, 3);
+            this.yearComboBox.Location = new System.Drawing.Point(54, 6);
             this.yearComboBox.Name = "yearComboBox";
             this.yearComboBox.Size = new System.Drawing.Size(99, 28);
             this.yearComboBox.TabIndex = 4;
@@ -495,6 +502,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn AscentGridColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn BikeGridColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CommentsGridColumn;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox bikeComboBox;
     }
 }
 

@@ -26,6 +26,10 @@ namespace CycleTracker.Controls
 
         public void SetDataSource (CombinedStatsObject current)
         {
+
+            this.fromYearLabel.Text = current.StartYear;
+            this.toYearLabel.Text = current.EndYear;
+
             this.totalRidesYearLabel.Text = current.TotalRides.ToString();
             this.totalTimeYearLabel.Text = current.TotalTime.ToString();
             this.averageSpeedYearLabel.Text = current.AverageSpeed.ToString();

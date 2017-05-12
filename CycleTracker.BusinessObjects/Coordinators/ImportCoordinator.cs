@@ -31,12 +31,6 @@ namespace CycleTracker.BusinessObjects
             _fileName = fileName;
         }
 
-        public void GetListOfBikes ()
-        {
-            Dictionary<string, int> bikes = SpreadsheetCoordinator.GetBikes();
-            DatabaseCoordinator.CreateListOfBikes(bikes);
-        }
-
         public void ImportRecords ()
         {
             

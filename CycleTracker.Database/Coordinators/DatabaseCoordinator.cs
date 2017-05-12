@@ -83,14 +83,14 @@ namespace CycleTracker.Database
             }
         }
 
-        private IOrderedQueryable<Bike> _bikeList = null;
-        public IOrderedQueryable<Bike> BikeList
+        private List<Bike> _bikeList = null;
+        public List<Bike> BikeList
         {
             get
             {
                 if (_bikeList == null)
                 {
-                    _bikeList = Entities.Bikes.OrderBy(b => b.BikeName);
+                    _bikeList = Entities.Bikes.OrderBy(b => b.BikeName).ToList();
                 }
                 return _bikeList;
             }
@@ -101,23 +101,6 @@ namespace CycleTracker.Database
             foreach (Bike currentBike in Entities.Bikes)
             {
                 Entities.Bikes.Remove(currentBike);
-            }
-            Entities.SaveChanges();
-        }
-
-        public void CreateListOfBikes (Dictionary<string, int> bikes)
-        {
-            foreach (KeyValuePair<string, int> currentBike in bikes)
-            {
-                if (!Bikes.Contains (currentBike.Key))
-                {
-                    Bike newBike = new Bike
-                    {
-                        BikeID = currentBike.Value,
-                        BikeName = currentBike.Key
-                    };
-                    Entities.Bikes.Add(newBike);
-                }
             }
             Entities.SaveChanges();
         }
@@ -142,11 +125,12 @@ namespace CycleTracker.Database
             Entities.SaveChanges();
         }
 
-        public List<FilteredRide> GetFilteredRidesForYears (int year, int previousYear)
+        public List<FilteredRide> GetFilteredRidesForYears (int year, int previousYear, int selectedBike)
         {
             List<FilteredRide> rides = (from r in Entities.Rides
                                         let rideDate = r.RideDate.Value
-                                        where rideDate.Year == year || rideDate.Year == previousYear
+                                        where (rideDate.Year == year || rideDate.Year == previousYear) &&
+                                        (selectedBike != 10000) ? r.BikeID == selectedBike : true
                                         select new FilteredRide
                                         {
                                             RideDate = r.RideDate,
@@ -169,7 +153,8 @@ namespace CycleTracker.Database
                 DistanceInMiles = rideDistance,
                 TimeInMinutes = rideTime,
                 Ascent = rideAscent,
-                Bike = BikeList.Where (b => b.BikeID == bikeId).FirstOrDefault()
+                Bike = BikeList.Where(b => b.BikeID == bikeId).FirstOrDefault(),
+                BikeID = bikeId
             };
 
             Entities.Rides.Add(newRide);
@@ -185,6 +170,8 @@ namespace CycleTracker.Database
         public decimal? AverageSpeed { get; set; }
         public int? Ascent { get; set; }
         public string Bike { get; set; }
+
+        public int BikeId { get; set; }
         public string Comments { get; set; }
     }
 

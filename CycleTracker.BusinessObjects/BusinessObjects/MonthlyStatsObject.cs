@@ -12,11 +12,19 @@ namespace CycleTracker.BusinessObjects
         private List<FilteredRide> _rides;
         private List<FilteredRide> _previousRides;
 
-        public CombinedStatsObject (List<FilteredRide> rides, List<FilteredRide> previousRides)
+        public CombinedStatsObject (List<FilteredRide> rides, List<FilteredRide> previousRides, int startYear, int endYear)
         {
             _rides = rides;
             _previousRides = previousRides;
+            StartYear = startYear.ToString();
+            EndYear = endYear.ToString();
         }
+
+        public string StartYear { get; set; }
+
+        public string EndYear { get; set; }
+
+        private int Bike { get; set; }
 
         #region Current Rides
 

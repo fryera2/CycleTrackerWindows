@@ -76,6 +76,8 @@
             this.label40 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.titleLabel = new System.Windows.Forms.Label();
+            this.fromYearLabel = new System.Windows.Forms.Label();
+            this.toYearLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // speedOver155Difference
@@ -559,6 +561,28 @@
             this.titleLabel.Text = "Yearly Summary";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // fromYearLabel
+            // 
+            this.fromYearLabel.AutoSize = true;
+            this.fromYearLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fromYearLabel.ForeColor = System.Drawing.Color.Fuchsia;
+            this.fromYearLabel.Location = new System.Drawing.Point(249, 16);
+            this.fromYearLabel.Name = "fromYearLabel";
+            this.fromYearLabel.Size = new System.Drawing.Size(66, 20);
+            this.fromYearLabel.TabIndex = 123;
+            this.fromYearLabel.Text = "{From}";
+            // 
+            // toYearLabel
+            // 
+            this.toYearLabel.AutoSize = true;
+            this.toYearLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toYearLabel.ForeColor = System.Drawing.Color.Fuchsia;
+            this.toYearLabel.Location = new System.Drawing.Point(377, 16);
+            this.toYearLabel.Name = "toYearLabel";
+            this.toYearLabel.Size = new System.Drawing.Size(44, 20);
+            this.toYearLabel.TabIndex = 124;
+            this.toYearLabel.Text = "{To}";
+            // 
             // StatisticsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -566,6 +590,8 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.toYearLabel);
+            this.Controls.Add(this.fromYearLabel);
             this.Controls.Add(this.speedOver155Difference);
             this.Controls.Add(this.speedOver155Previous);
             this.Controls.Add(this.speedOver155Current);
@@ -672,5 +698,7 @@
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.Label fromYearLabel;
+        private System.Windows.Forms.Label toYearLabel;
     }
 }

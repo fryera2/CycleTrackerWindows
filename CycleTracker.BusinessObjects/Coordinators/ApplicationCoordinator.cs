@@ -14,6 +14,7 @@ namespace CycleTracker.BusinessObjects
         private int _selectedMonth;
         private int _selectedCurrentYear;
         private int _selectedPreviousYear;
+        private int _selectedBike;
 
         public List<int> RideYears
         {
@@ -77,6 +78,31 @@ namespace CycleTracker.BusinessObjects
             }
         }
 
+        public int SelectedBike
+        {
+            get
+            {
+                return _selectedBike;
+            }
+            set
+            {
+                _selectedBike = value;
+            }
+        }
+
+        private List<Bike> _bikes = null;
+        public List<Bike> Bikes
+        {
+            get
+            {
+                if (_bikes == null)
+                {
+                    _bikes =  DatabaseCoordinator.BikeList;
+                }
+                return _bikes;
+            }
+        }
+
         private List<FilteredRide> _filteredRides = null;
         protected List<FilteredRide> FilteredRides
         {
@@ -84,7 +110,8 @@ namespace CycleTracker.BusinessObjects
             {
                 if (_filteredRides == null)
                 {
-                    _filteredRides = DatabaseCoordinator.GetFilteredRidesForYears(SelectedCurrentYear, SelectedPreviousYear);
+                    _filteredRides = DatabaseCoordinator.GetFilteredRidesForYears(SelectedCurrentYear, SelectedPreviousYear, SelectedBike);
+
                 }
                 return _filteredRides;
             }
@@ -150,6 +177,5 @@ namespace CycleTracker.BusinessObjects
             return FilteredRides.Where(r => ((DateTime)r.RideDate).CompareTo(startDate) >= 0 &&
                                             ((DateTime)r.RideDate).CompareTo(endDate) <= 0).ToList();
         }
-
     }
 }
