@@ -104,7 +104,7 @@ namespace CycleTracker.BusinessObjects
         }
 
         private List<FilteredRide> _filteredRides = null;
-        protected List<FilteredRide> FilteredRides
+        protected List<FilteredRide> FilteredRides 
         {
             get
             {
@@ -128,7 +128,9 @@ namespace CycleTracker.BusinessObjects
 
         public List<FilteredRide> GetFilteredRides ()
         {
-            return FilteredRides.Where(r => ((DateTime)r.RideDate).Year == SelectedCurrentYear && ((DateTime)r.RideDate).Month == SelectedMonth).ToList();
+            return FilteredRides.Where(r => ((DateTime)r.RideDate).Year == SelectedCurrentYear && 
+                                ((DateTime)r.RideDate).Month == SelectedMonth).OrderByDescending(f => f)
+                                .ToList();
         }
 
         public List<FilteredRide> GetPreviousFilteredRides()

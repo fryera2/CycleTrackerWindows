@@ -15,6 +15,8 @@ namespace CycleTracker
     public partial class AddRideForm : RideBaseForm
     {
 
+        private Enumerations.ApplicationProcessEnum _appProcess;
+        private FilteredRide _ride;
         private NewRideCoordinator _coordinator;
         private NewRideCoordinator Coordinator
         {
@@ -31,11 +33,30 @@ namespace CycleTracker
         public AddRideForm()
         {
             InitializeComponent();
+            _appProcess = Enumerations.ApplicationProcessEnum.Add;
+        }
+
+        public AddRideForm (FilteredRide ride)
+        {
+            InitializeComponent();
+            _appProcess = Enumerations.ApplicationProcessEnum.Update;
+            _ride = ride;
+            this.Text = "Edit Existing ride";
+            this.addButton.Text = "Edit";
         }
 
         protected override void Initialise()
         {
             this.bikeListComboBox.DataSource = Coordinator.BikeList;
+            if (_appProcess == Enumerations.ApplicationProcessEnum.Update)
+            {
+                Coordinator.RideId = _ride.RideID;
+                Coordinator.RideDate = (DateTime)_ride.RideDate;
+                Coordinator.RideDistance = (decimal)_ride.DistanceInMiles;
+                Coordinator.RideTime = (decimal)_ride.RideTimeInMinutes;
+                Coordinator.RideAscent = (int)_ride.Ascent;
+                Coordinator.BikeUsed = _ride.BikeId;
+            }
         }
 
         protected override void ClearDataBindings()
@@ -50,6 +71,7 @@ namespace CycleTracker
 
         protected override void ApplyDataBindings()
         {
+
             this.rideDatePicker.DataBindings.Add(new Binding("Value", Coordinator, "RideDate"));
             this.rideDistanceTextBox.DataBindings.Add(new Binding("Text", Coordinator, "RideDistance"));
             this.rideTimeTextBox.DataBindings.Add(new Binding("Text", Coordinator, "RideTime"));
@@ -64,14 +86,28 @@ namespace CycleTracker
 
         private void addNewButton_Click(object sender, EventArgs e)
         {
-            Coordinator.AddRideToDatabase();
+            if (_appProcess == Enumerations.ApplicationProcessEnum.Add)
+            {
+                Coordinator.AddRideToDatabase();
+            }
+            else
+            {
+                Coordinator.EditRideInDatabase();
+            }
             ClearDataBindings();
             ApplyDataBindings();
         }
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            Coordinator.AddRideToDatabase();
+            if (_appProcess == Enumerations.ApplicationProcessEnum.Add)
+            {
+                Coordinator.AddRideToDatabase();
+            }
+            else
+            {
+                Coordinator.EditRideInDatabase();
+            }
             this.Close();
         }
     }

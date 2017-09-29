@@ -31,6 +31,9 @@ namespace CycleTracker.BusinessObjects
                 _rideDate = value;
             }
         }
+
+        public int RideId { get; set; }
+
         public decimal RideDistance { get; set; }
 
         public decimal RideTime { get; set; }
@@ -55,6 +58,15 @@ namespace CycleTracker.BusinessObjects
             Validate();
 
             DatabaseCoordinator.CreateNewEntry((DateTime)RideDate, RideDistance, RideTime, RideAscent, BikeUsed);
+            ClearValues();
+
+            return true;
+        }
+
+        public bool EditRideInDatabase ()
+        {
+            Validate();
+            DatabaseCoordinator.EditExistingDetails(RideId, (DateTime)RideDate, RideDistance, RideTime, RideAscent, BikeUsed);
             ClearValues();
 
             return true;

@@ -1,4 +1,5 @@
 ﻿using CycleTracker.BusinessObjects;
+using CycleTracker.Database;
 using CycleTracker.Database.Database;
 using System;
 using System.Collections.Generic;
@@ -210,6 +211,18 @@ namespace CycleTracker
             if (_initialising) { return; }
 
             AppCoordinator.SelectedBike = Convert.ToInt32(bikeComboBox.SelectedValue);
+            AppCoordinator.ResetRideData();
+            SetAllDataSources();
+        }
+
+        private void editItemButton_Click(object sender, EventArgs e)
+        {
+            FilteredRide ride = this.ridesGrid.SelectedRows[0].DataBoundItem as FilteredRide;
+
+            if (ride == null) { return; }
+
+            AddRideForm addForm = new AddRideForm(ride);
+            addForm.ShowDialog();
             AppCoordinator.ResetRideData();
             SetAllDataSources();
         }

@@ -67,6 +67,7 @@
     <Compile Include="Coordinators\BaseCoordinator.cs" />
     <Compile Include="Coordinators\ImportCoordinator.cs" />
     <Compile Include="Coordinators\NewRideCoordinator.cs" />
+    <Compile Include="Enumerations\Enumerations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

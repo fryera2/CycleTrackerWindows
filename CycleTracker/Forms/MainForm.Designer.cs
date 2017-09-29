@@ -62,7 +62,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.addRideButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.editItemButton = new System.Windows.Forms.ToolStripButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.ridesGroupBox.SuspendLayout();
@@ -71,7 +71,6 @@
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,10 +79,10 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 28);
+            this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1345, 942);
+            this.tabControl1.Size = new System.Drawing.Size(1345, 946);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -94,7 +93,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1337, 913);
+            this.tabPage1.Size = new System.Drawing.Size(1337, 917);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Summary";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -107,7 +106,7 @@
             this.ridesGroupBox.Location = new System.Drawing.Point(3, 454);
             this.ridesGroupBox.Name = "ridesGroupBox";
             this.ridesGroupBox.Padding = new System.Windows.Forms.Padding(10);
-            this.ridesGroupBox.Size = new System.Drawing.Size(1331, 456);
+            this.ridesGroupBox.Size = new System.Drawing.Size(1331, 460);
             this.ridesGroupBox.TabIndex = 1;
             this.ridesGroupBox.TabStop = false;
             this.ridesGroupBox.Text = "Rides";
@@ -120,7 +119,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(10, 72);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1311, 374);
+            this.panel2.Size = new System.Drawing.Size(1311, 378);
             this.panel2.TabIndex = 1;
             // 
             // ridesGrid
@@ -140,7 +139,7 @@
             this.ridesGrid.RowHeadersVisible = false;
             this.ridesGrid.RowTemplate.Height = 24;
             this.ridesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ridesGrid.Size = new System.Drawing.Size(86, 374);
+            this.ridesGrid.Size = new System.Drawing.Size(86, 378);
             this.ridesGrid.TabIndex = 2;
             // 
             // RideDateGridColumn
@@ -199,7 +198,7 @@
             this.monthToDateSummaryControl.Margin = new System.Windows.Forms.Padding(4);
             this.monthToDateSummaryControl.Name = "monthToDateSummaryControl";
             this.monthToDateSummaryControl.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.monthToDateSummaryControl.Size = new System.Drawing.Size(616, 374);
+            this.monthToDateSummaryControl.Size = new System.Drawing.Size(616, 378);
             this.monthToDateSummaryControl.TabIndex = 10;
             // 
             // montlySummaryControl
@@ -213,7 +212,7 @@
             this.montlySummaryControl.Margin = new System.Windows.Forms.Padding(4);
             this.montlySummaryControl.Name = "montlySummaryControl";
             this.montlySummaryControl.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.montlySummaryControl.Size = new System.Drawing.Size(609, 374);
+            this.montlySummaryControl.Size = new System.Drawing.Size(609, 378);
             this.montlySummaryControl.TabIndex = 9;
             // 
             // panel1
@@ -375,7 +374,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1337, 913);
+            this.tabPage2.Size = new System.Drawing.Size(1337, 917);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -383,11 +382,9 @@
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1345, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1345, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -410,8 +407,8 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addRideButton,
-            this.toolStripButton2});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 28);
+            this.editItemButton});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1345, 27);
             this.toolStrip1.TabIndex = 2;
@@ -424,17 +421,18 @@
             this.addRideButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.addRideButton.Name = "addRideButton";
             this.addRideButton.Size = new System.Drawing.Size(24, 24);
-            this.addRideButton.Text = "addRideButton";
+            this.addRideButton.Text = "toolStripButton1";
             this.addRideButton.Click += new System.EventHandler(this.addRideButton_Click);
             // 
-            // toolStripButton2
+            // editItemButton
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(24, 24);
-            this.toolStripButton2.Text = "toolStripButton2";
+            this.editItemButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.editItemButton.Image = ((System.Drawing.Image)(resources.GetObject("editItemButton.Image")));
+            this.editItemButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.editItemButton.Name = "editItemButton";
+            this.editItemButton.Size = new System.Drawing.Size(24, 24);
+            this.editItemButton.Text = "toolStripButton1";
+            this.editItemButton.Click += new System.EventHandler(this.editItemButton_Click);
             // 
             // MainForm
             // 
@@ -444,6 +442,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Cycle Tracker";
@@ -459,8 +458,6 @@
             this.groupBox1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -485,7 +482,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton addRideButton;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ComboBox yearComboBox;
         private System.Windows.Forms.ComboBox previousYearComboBox;
@@ -504,6 +500,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CommentsGridColumn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox bikeComboBox;
+        private System.Windows.Forms.ToolStripButton addRideButton;
+        private System.Windows.Forms.ToolStripButton editItemButton;
     }
 }
 

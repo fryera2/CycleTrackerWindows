@@ -133,19 +133,22 @@ namespace CycleTracker.Database
                                         (selectedBike != 10000) ? r.BikeID == selectedBike : true
                                         select new FilteredRide
                                         {
+                                            RideID = r.RideID,
                                             RideDate = r.RideDate,
                                             DistanceInMiles = r.DistanceInMiles,
                                             RideTime = r.TimeInHours,
+                                            RideTimeInMinutes = r.TimeInMinutes,
                                             AverageSpeed = r.AverageSpeed,
                                             Ascent = r.Ascent,
-                                            Bike = r.Bike.BikeName
+                                            Bike = r.Bike.BikeName,
+                                            BikeId = r.Bike.BikeID
                                         }
                                     ).ToList();
 
             return rides;
         }
 
-        public void CreateNewEntry (DateTime rideDate, decimal? rideDistance, decimal? rideTime, int rideAscent, int bikeId)
+        public int CreateNewEntry (DateTime rideDate, decimal? rideDistance, decimal? rideTime, int rideAscent, int bikeId)
         {
             Ride newRide = new Ride
             {
@@ -159,13 +162,33 @@ namespace CycleTracker.Database
 
             Entities.Rides.Add(newRide);
             Entities.SaveChanges();
+
+            return newRide.RideID;
+        }
+
+        public void EditExistingDetails(int rideId, DateTime rideDate, decimal? rideDistance, decimal? rideTime, int rideAscent, int bikeId)
+        {
+            Ride existingRide = Entities.Rides.Where(r => r.RideID == rideId).SingleOrDefault();
+
+            if (existingRide == null) { return; }
+
+            existingRide.RideDate = rideDate;
+            existingRide.DistanceInMiles = rideDistance;
+            existingRide.TimeInMinutes = rideTime;
+            existingRide.Ascent = rideAscent;
+            existingRide.BikeID = bikeId;
+
+            Entities.SaveChanges();
         }
     }
 
-    public class FilteredRide
+    public class FilteredRide : IComparable
     {
+        public int RideID { get; set; }
+
         public DateTime? RideDate { get; set; }
         public decimal? RideTime { get; set; }
+        public decimal? RideTimeInMinutes { get; set; }
         public decimal? DistanceInMiles { get; set; }
         public decimal? AverageSpeed { get; set; }
         public int? Ascent { get; set; }
@@ -173,6 +196,24 @@ namespace CycleTracker.Database
 
         public int BikeId { get; set; }
         public string Comments { get; set; }
+
+        public int CompareTo(object obj)
+        {
+            DateTime compareDate = Convert.ToDateTime(((FilteredRide)obj).RideDate);
+
+            if (this.RideDate < compareDate)
+            {
+                return -1;
+            }
+            else if (this.RideDate > compareDate)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 
 }
