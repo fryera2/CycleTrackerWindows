@@ -482,7 +482,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ComboBox yearComboBox;
         private System.Windows.Forms.ComboBox previousYearComboBox;
         private Controls.StatisticsControl yearlySummaryControl;

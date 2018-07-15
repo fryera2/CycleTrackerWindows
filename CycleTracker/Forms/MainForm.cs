@@ -17,21 +17,8 @@ namespace CycleTracker
     public partial class MainForm : RideBaseForm
     {
 
-        private ImportCoordinator _coordinator = null;
         private ApplicationCoordinator _appCoordinator = null;
         private bool _initialising;
-
-        private ImportCoordinator ImportCoordinator
-        {
-            get
-            {
-                if (_coordinator == null)
-                {
-                    _coordinator = new ImportCoordinator(@"C:\Users\Andrew\Documents\exercise.xlsx");
-                }
-                return _coordinator;
-            }
-        }
         
         private ApplicationCoordinator AppCoordinator
         {
@@ -217,9 +204,12 @@ namespace CycleTracker
 
         private void editItemButton_Click(object sender, EventArgs e)
         {
-            FilteredRide ride = this.ridesGrid.SelectedRows[0].DataBoundItem as FilteredRide;
+            if (this.ridesGrid.SelectedRows.Count == 0)
+            {
+                return;
+            }
 
-            if (ride == null) { return; }
+            FilteredRide ride = this.ridesGrid.SelectedRows[0].DataBoundItem as FilteredRide;
 
             AddRideForm addForm = new AddRideForm(ride);
             addForm.ShowDialog();
