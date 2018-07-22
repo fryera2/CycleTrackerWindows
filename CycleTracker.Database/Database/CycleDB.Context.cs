@@ -27,5 +27,6 @@ namespace CycleTracker.Database.Database
     
         public virtual DbSet<Bike> Bikes { get; set; }
         public virtual DbSet<Ride> Rides { get; set; }
+        public virtual DbSet<RideYear> RideYears { get; set; }
     }
 }

@@ -28,6 +28,12 @@
           <Property Name="Ascent" Type="int" Nullable="false" />
           <Property Name="Comments" Type="varchar(max)" />
         </EntityType>
+        <EntityType Name="RideYears">
+          <Key>
+            <PropertyRef Name="YearID" />
+          </Key>
+          <Property Name="YearID" Type="int" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Rides_Bikes1">
           <End Role="Bikes" Type="Self.Bikes" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -45,6 +51,7 @@
         <EntityContainer Name="CycleDBModelStoreContainer">
           <EntitySet Name="Bikes" EntityType="Self.Bikes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rides" EntityType="Self.Rides" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RideYears" EntityType="Self.RideYears" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Rides_Bikes1" Association="Self.FK_Rides_Bikes1">
             <End Role="Bikes" EntitySet="Bikes" />
             <End Role="Rides" EntitySet="Rides" />
@@ -100,7 +107,14 @@
             <End Role="Bikes" EntitySet="Bikes" />
             <End Role="Rides" EntitySet="Rides" />
           </AssociationSet>
+          <EntitySet Name="RideYears" EntityType="CycleDBModel.RideYear" />
         </EntityContainer>
+        <EntityType Name="RideYear">
+          <Key>
+            <PropertyRef Name="YearID" />
+          </Key>
+          <Property Name="YearID" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -129,6 +143,13 @@
                 <ScalarProperty Name="DistanceInKm" ColumnName="DistanceInKm" />
                 <ScalarProperty Name="Calories" ColumnName="Calories" />
                 <ScalarProperty Name="AverageSpeed" ColumnName="AverageSpeed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RideYears">
+            <EntityTypeMapping TypeName="CycleDBModel.RideYear">
+              <MappingFragment StoreEntitySet="RideYears">
+                <ScalarProperty Name="YearID" ColumnName="YearID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -48,10 +48,10 @@ namespace CycleTracker.Database
         public List<int> RideYears
         {
             get
-            {
+            {               
                 if (_rideYears == null)
                 {
-                    _rideYears = Entities.Rides.Select(r => r.RideDate.Value.Year).Distinct().OrderBy (y => y).ToList();
+                    _rideYears = Entities.RideYears.Select(y => y.YearID).ToList();
                 }
                 return _rideYears;
             }
@@ -64,7 +64,7 @@ namespace CycleTracker.Database
             {
                 if (_ridePreviousYears == null)
                 {
-                    _ridePreviousYears = Entities.Rides.Select(r => r.RideDate.Value.Year).Distinct().OrderBy(y => y).ToList();
+                    _ridePreviousYears = RideYears;
                 }
                 return _ridePreviousYears;
             }
@@ -128,13 +128,12 @@ namespace CycleTracker.Database
         public List<FilteredRide> GetFilteredRidesForYears (int year, int previousYear, int selectedBike)
         {
             List<FilteredRide> rides = (from r in Entities.Rides
-                                        let rideDate = r.RideDate.Value
-                                        where (rideDate.Year == year || rideDate.Year == previousYear) &&
+                                        where (r.RideDate.Value.Year == year || r.RideDate.Value.Year == previousYear) &&
                                         (selectedBike != 10000) ? r.BikeID == selectedBike : true
                                         select new FilteredRide
                                         {
                                             RideID = r.RideID,
-                                            RideDate = r.RideDate,
+                                            RideDate = (DateTime)r.RideDate,
                                             DistanceInMiles = r.DistanceInMiles,
                                             RideTime = r.TimeInHours,
                                             RideTimeInMinutes = r.TimeInMinutes,
@@ -150,6 +149,8 @@ namespace CycleTracker.Database
 
         public int CreateNewEntry (DateTime rideDate, decimal? rideDistance, decimal? rideTime, int rideAscent, int bikeId)
         {
+            CreateYear(rideDate.Year);
+
             Ride newRide = new Ride
             {
                 RideDate = rideDate,
@@ -180,13 +181,22 @@ namespace CycleTracker.Database
 
             Entities.SaveChanges();
         }
+
+
+        private void CreateYear(int year)
+        {
+            if (RideYears.Any(y => y == year)) { return; }
+
+            Entities.RideYears.Add(new RideYear { YearID = year });
+            Entities.SaveChanges();
+        }
     }
 
     public class FilteredRide : IComparable
     {
         public int RideID { get; set; }
 
-        public DateTime? RideDate { get; set; }
+        public DateTime RideDate { get; set; }
         public decimal? RideTime { get; set; }
         public decimal? RideTimeInMinutes { get; set; }
         public decimal? DistanceInMiles { get; set; }

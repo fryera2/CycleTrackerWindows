@@ -11,10 +11,8 @@ namespace CycleTracker.BusinessObjects
     public class ApplicationCoordinator : BaseCoordinator
     {
 
-        private int _selectedMonth;
         private int _selectedCurrentYear;
         private int _selectedPreviousYear;
-        private int _selectedBike;
 
         public List<int> RideYears
         {
@@ -40,17 +38,7 @@ namespace CycleTracker.BusinessObjects
             }
         }
 
-        public int SelectedMonth
-        {
-            get
-            {
-                return _selectedMonth;
-            }
-            set
-            {
-                _selectedMonth = value;
-            }
-        }
+        public int SelectedMonth { get; set; }
 
         public int SelectedCurrentYear
         {
@@ -60,6 +48,9 @@ namespace CycleTracker.BusinessObjects
             }
             set
             {
+
+                if (value == _selectedCurrentYear) { return; }
+
                 _selectedCurrentYear = value;
                 _filteredRides = null;
             }
@@ -73,22 +64,14 @@ namespace CycleTracker.BusinessObjects
             }
             set
             {
+                if (value == _selectedPreviousYear) { return; }
+
                 _selectedPreviousYear = value;
                 _filteredRides = null;
             }
         }
 
-        public int SelectedBike
-        {
-            get
-            {
-                return _selectedBike;
-            }
-            set
-            {
-                _selectedBike = value;
-            }
-        }
+        public int SelectedBike { get; set; }
 
         private List<Bike> _bikes = null;
         public List<Bike> Bikes
@@ -128,38 +111,38 @@ namespace CycleTracker.BusinessObjects
 
         public List<FilteredRide> GetFilteredRides ()
         {
-            return FilteredRides.Where(r => ((DateTime)r.RideDate).Year == SelectedCurrentYear && 
-                                ((DateTime)r.RideDate).Month == SelectedMonth).OrderByDescending(f => f)
+            return FilteredRides.Where(r => (r.RideDate).Year == SelectedCurrentYear && 
+                                (r.RideDate).Month == SelectedMonth).OrderByDescending(f => f)
                                 .ToList();
         }
 
         public List<FilteredRide> GetPreviousFilteredRides()
         {
-            return FilteredRides.Where(r => ((DateTime)r.RideDate).Year == SelectedPreviousYear && ((DateTime)r.RideDate).Month == SelectedMonth).ToList();
+            return FilteredRides.Where(r => (r.RideDate).Year == SelectedPreviousYear && ((DateTime)r.RideDate).Month == SelectedMonth).ToList();
         }
 
         public List<FilteredRide> GetFilteredRidesForYear()
         {
-            return FilteredRides.Where(r => ((DateTime)r.RideDate).Year == SelectedCurrentYear).ToList();
+            return FilteredRides.Where(r => (r.RideDate).Year == SelectedCurrentYear).ToList();
         }
 
         public List<FilteredRide> GetPreviousFilteredRidesForYear()
         {
-            return FilteredRides.Where(r => ((DateTime)r.RideDate).Year == SelectedPreviousYear).ToList();
+            return FilteredRides.Where(r => (r.RideDate).Year == SelectedPreviousYear).ToList();
         }
 
         public List<FilteredRide> GetFilteredRidesToDate()
         {
             DateTime newDate = new DateTime(SelectedCurrentYear, DateTime.Now.Month, DateTime.Now.Day);
-            return FilteredRides.Where(r => ((DateTime)r.RideDate).CompareTo(newDate) <= 0 &&
-                                            ((DateTime)r.RideDate).Year == SelectedCurrentYear).ToList();
+            return FilteredRides.Where(r => (r.RideDate.CompareTo(newDate) <= 0) &&
+                                            (r.RideDate.Year == SelectedCurrentYear)).ToList();
         }
 
         public List<FilteredRide> GetPreviousRidesToDate()
         {
             DateTime newDate = new DateTime(SelectedPreviousYear, DateTime.Now.Month, DateTime.Now.Day);
-            return FilteredRides.Where(r => ((DateTime)r.RideDate).CompareTo(newDate) <= 0 &&
-                                            ((DateTime)r.RideDate).Year == SelectedPreviousYear).ToList();
+            return FilteredRides.Where(r => (r.RideDate).CompareTo(newDate) <= 0 &&
+                                            (r.RideDate).Year == SelectedPreviousYear).ToList();
         }
 
         public List<FilteredRide> GetFilteredRidesMonthToDate()
@@ -167,8 +150,8 @@ namespace CycleTracker.BusinessObjects
             DateTime startDate = new DateTime(SelectedCurrentYear, DateTime.Now.Month, 1);
             DateTime endDate = new DateTime(SelectedCurrentYear, DateTime.Now.Month, DateTime.Now.Day);
 
-            return FilteredRides.Where(r => ((DateTime)r.RideDate).CompareTo(startDate) >= 0 &&
-                                            ((DateTime)r.RideDate).CompareTo(endDate) <= 0).ToList();
+            return FilteredRides.Where(r => (r.RideDate).CompareTo(startDate) >= 0 &&
+                                            (r.RideDate).CompareTo(endDate) <= 0).ToList();
         }
 
         public List<FilteredRide> GetPreviousFilteredRidesMonthToDate()
@@ -176,8 +159,8 @@ namespace CycleTracker.BusinessObjects
             DateTime startDate = new DateTime(SelectedPreviousYear, DateTime.Now.Month, 1);
             DateTime endDate = new DateTime(SelectedPreviousYear, DateTime.Now.Month, DateTime.Now.Day);
 
-            return FilteredRides.Where(r => ((DateTime)r.RideDate).CompareTo(startDate) >= 0 &&
-                                            ((DateTime)r.RideDate).CompareTo(endDate) <= 0).ToList();
+            return FilteredRides.Where(r => (r.RideDate).CompareTo(startDate) >= 0 &&
+                                            (r.RideDate).CompareTo(endDate) <= 0).ToList();
         }
     }
 }

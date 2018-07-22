@@ -56,33 +56,16 @@ namespace CycleTracker
         protected override void Initialise()
         {
             _initialising = true;
-            this.monthComboBox.DataSource = AppCoordinator.RideMonths;
-            List<int> years = AppCoordinator.RideYears;
-            List<int> previousYears = AppCoordinator.RidePreviousYears;
-            this.yearComboBox.DataSource = years;
-            this.previousYearComboBox.DataSource = previousYears;
             int currentYear = DateTime.Now.Year;
             int previousYear = currentYear - 1;
-            this.AppCoordinator.SelectedMonth = DateTime.Now.Month;
-            this.monthComboBox.SelectedIndex = (this.AppCoordinator.SelectedMonth - 1);
-           
+            this.monthComboBox.DataSource = AppCoordinator.RideMonths;
+            this.yearComboBox.DataSource = AppCoordinator.RideYears;
+            this.previousYearComboBox.DataSource = AppCoordinator.RidePreviousYears;
+            this.AppCoordinator.SelectedMonth = DateTime.Now.Month;           
             this.AppCoordinator.SelectedCurrentYear = currentYear;
-            this.yearComboBox.SelectedItem = this.AppCoordinator.SelectedCurrentYear;
-
-            if (years.Contains (previousYear))
-            {
-                this.AppCoordinator.SelectedPreviousYear = previousYear;
-                this.previousYearComboBox.SelectedItem = previousYear;
-            } 
-            else
-            {
-                this.AppCoordinator.SelectedPreviousYear = currentYear;
-                this.previousYearComboBox.SelectedItem = currentYear;
-            }
+            this.AppCoordinator.SelectedPreviousYear = (AppCoordinator.RideYears.Contains(previousYear)) ? previousYear : currentYear;
             this.bikeComboBox.DataSource = AppCoordinator.Bikes;
             this.AppCoordinator.SelectedBike = AppCoordinator.Bikes.Where(b => b.BikeName == "All").Select(b => b.BikeID).Single();
-            this.bikeComboBox.SelectedValue = this.AppCoordinator.SelectedBike;
-
             _initialising = false;
 
             SetAllDataSources();
