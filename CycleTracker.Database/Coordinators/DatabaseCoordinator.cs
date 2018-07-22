@@ -70,19 +70,6 @@ namespace CycleTracker.Database
             }
         }
 
-        private List<string> _rideMonths = null;
-        public List<string> RideMonths
-        {
-            get
-            {
-                if (_rideMonths == null)
-                {
-                    _rideMonths = DateTimeFormatInfo.CurrentInfo.MonthNames.ToList();
-                }
-                return _rideMonths;
-            }
-        }
-
         private List<Bike> _bikeList = null;
         public List<Bike> BikeList
         {
@@ -225,12 +212,4 @@ namespace CycleTracker.Database
             }
         }
     }
-
-    public class FilteredBike
-    {
-        public int BikeID { get; set; }
-
-        public string BikeName { get; set; }
-    }
-
 }

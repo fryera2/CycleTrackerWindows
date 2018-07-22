@@ -57,7 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessObjects\BikeObject.cs" />
+    <Compile Include="BusinessObjects\FilteredBike.cs" />
+    <Compile Include="BusinessObjects\FilteredMonth.cs" />
     <Compile Include="BusinessObjects\MonthlyStatsObject.cs" />
     <Compile Include="Coordinators\ApplicationCoordinator.cs" />
     <Compile Include="Coordinators\BaseCoordinator.cs" />

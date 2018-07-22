@@ -10,13 +10,27 @@ namespace CycleTracker.BusinessObjects
     {
 
         private DateTime _rideDate = DateTime.Now;
+        private List<FilteredBike> _bikeListMinusAll = null;
 
-        public List<BikeObject> BikeList
+        public List<FilteredBike> BikeList
         {
             get
             {
                 return DatabaseCoordinator.BikeList
-                    .Select(b => new BikeObject { BikeId = b.BikeID, BikeName = b.BikeName }).ToList();
+                    .Select(b => new FilteredBike { BikeID = b.BikeID, BikeName = b.BikeName }).ToList();
+            }
+        }
+
+        public List<FilteredBike> BikeListMinusAll
+        {
+            get
+            {
+                if (_bikeListMinusAll == null)
+                {
+                    return DatabaseCoordinator.BikeList.Where (b => b.BikeID != 0)
+                        .Select(b => new FilteredBike { BikeID = b.BikeID, BikeName = b.BikeName }).ToList();
+                }
+                return _bikeListMinusAll;
             }
         }
 

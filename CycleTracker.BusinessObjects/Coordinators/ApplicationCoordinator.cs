@@ -2,6 +2,7 @@
 using CycleTracker.Database.Database;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,15 +31,45 @@ namespace CycleTracker.BusinessObjects
             }
         }
 
-        public List<string> RideMonths
+        private List<FilteredMonth> _rideMonths = null;
+        public List<FilteredMonth> RideMonths
         {
             get
             {
-                return DatabaseCoordinator.RideMonths;
+                if (_rideMonths == null)
+                {
+                    _rideMonths = new List<FilteredMonth>();
+                    int monthId = 1;
+                    foreach (string monthName in DateTimeFormatInfo.CurrentInfo.MonthNames)
+                    {
+                        _rideMonths.Add(new FilteredMonth
+                        {
+                            MonthId = monthId,
+                            MonthName = monthName
+                        });
+                        monthId++;
+                    }
+                }
+                return _rideMonths;
             }
         }
 
-        public int SelectedMonth { get; set; }
+        private FilteredMonth _selectedMonth;
+        public FilteredMonth SelectedMonth
+        {
+            get
+            {
+                if (_selectedMonth == null)
+                {
+                    _selectedMonth = new FilteredMonth(DateTime.Now);
+                }
+                return _selectedMonth;
+            }
+            set
+            {
+                _selectedMonth = value;
+            }
+        }
 
         public int SelectedCurrentYear
         {
@@ -121,13 +152,13 @@ namespace CycleTracker.BusinessObjects
         public List<FilteredRide> GetFilteredRides ()
         {
             return FilteredRides.Where(r => (r.RideDate).Year == SelectedCurrentYear && 
-                                (r.RideDate).Month == SelectedMonth).OrderByDescending(f => f)
+                                (r.RideDate).Month == SelectedMonth.MonthId).OrderByDescending(f => f)
                                 .ToList();
         }
 
         public List<FilteredRide> GetPreviousFilteredRides()
         {
-            return FilteredRides.Where(r => (r.RideDate).Year == SelectedPreviousYear && ((DateTime)r.RideDate).Month == SelectedMonth).ToList();
+            return FilteredRides.Where(r => (r.RideDate).Year == SelectedPreviousYear && ((DateTime)r.RideDate).Month == SelectedMonth.MonthId).ToList();
         }
 
         public List<FilteredRide> GetFilteredRidesForYear()

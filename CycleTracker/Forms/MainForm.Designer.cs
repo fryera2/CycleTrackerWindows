@@ -243,12 +243,14 @@
             // 
             // monthComboBox
             // 
+            this.monthComboBox.DisplayMember = "MonthName";
             this.monthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.monthComboBox.FormattingEnabled = true;
             this.monthComboBox.Location = new System.Drawing.Point(85, 3);
             this.monthComboBox.Name = "monthComboBox";
             this.monthComboBox.Size = new System.Drawing.Size(121, 28);
             this.monthComboBox.TabIndex = 1;
+            this.monthComboBox.ValueMember = "monthId";
             this.monthComboBox.SelectedIndexChanged += new System.EventHandler(this.monthComboBox_SelectedValueChanged);
             this.monthComboBox.SelectedValueChanged += new System.EventHandler(this.monthComboBox_SelectedValueChanged);
             // 

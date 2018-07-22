@@ -48,7 +48,7 @@ namespace CycleTracker
 
         protected override void ApplyDataBindings()
         {
-            this.monthComboBox.DataBindings.Add(new Binding("Text", AppCoordinator, "SelectedMonth"));
+            this.monthComboBox.DataBindings.Add(new Binding("SelectedItem", AppCoordinator, "SelectedMonth"));
             this.yearComboBox.DataBindings.Add(new Binding("Text", AppCoordinator, "SelectedCurrentYear"));
             this.previousYearComboBox.DataBindings.Add(new Binding("Text", AppCoordinator, "SelectedPreviousYear"));
             this.bikeComboBox.DataBindings.Add(new Binding("SelectedItem", AppCoordinator, "SelectedBike"));
@@ -62,10 +62,10 @@ namespace CycleTracker
             int previousYear = currentYear - 1;
             this.monthComboBox.DataSource = AppCoordinator.RideMonths;
             this.yearComboBox.DataSource = AppCoordinator.RideYears;
-            this.previousYearComboBox.DataSource = AppCoordinator.RidePreviousYears;
-            this.AppCoordinator.SelectedMonth = DateTime.Now.Month;           
+            this.previousYearComboBox.DataSource = AppCoordinator.RidePreviousYears;          
             this.AppCoordinator.SelectedCurrentYear = currentYear;
             this.AppCoordinator.SelectedPreviousYear = (AppCoordinator.RideYears.Contains(previousYear)) ? previousYear : currentYear;
+            this.AppCoordinator.SelectedMonth = AppCoordinator.RideMonths.Where(m => m.MonthId == DateTime.Now.Month).Single();
             this.bikeComboBox.DataSource = AppCoordinator.Bikes;
             this.AppCoordinator.SelectedBike = AppCoordinator.Bikes.Where(b => b.BikeName == "All").Single();
             _initialising = false;
@@ -163,6 +163,8 @@ namespace CycleTracker
         private void monthComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
             if (_initialising) { return; }
+
+            this.AppCoordinator.SelectedMonth = monthComboBox.SelectedItem as FilteredMonth;
 
             SetMonthDataSource();
             SetMonthToDateDataSource();

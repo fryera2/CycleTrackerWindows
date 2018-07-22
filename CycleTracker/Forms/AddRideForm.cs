@@ -47,7 +47,7 @@ namespace CycleTracker
 
         protected override void Initialise()
         {
-            this.bikeListComboBox.DataSource = Coordinator.BikeList;
+            this.bikeListComboBox.DataSource = Coordinator.BikeListMinusAll;
             if (_appProcess == Enumerations.ApplicationProcessEnum.Update)
             {
                 Coordinator.RideId = _ride.RideID;
@@ -57,6 +57,9 @@ namespace CycleTracker
                 Coordinator.RideAscent = (int)_ride.Ascent;
                 Coordinator.BikeUsed = _ride.BikeId;
             }
+
+            ClearDataBindings();
+            ApplyDataBindings();
         }
 
         protected override void ClearDataBindings()

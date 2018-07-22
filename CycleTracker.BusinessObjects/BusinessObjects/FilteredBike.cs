@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace CycleTracker.BusinessObjects
 {
-    public class BikeObject
+
+    public class FilteredBike
     {
-        public int BikeId { get; set; }
+        public int BikeID { get; set; }
+
         public string BikeName { get; set; }
     }
 }
