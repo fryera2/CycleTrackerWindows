@@ -57,6 +57,7 @@ namespace CycleTracker
         protected override void Initialise()
         {
             _initialising = true;
+            this.Cursor = Cursors.WaitCursor;
             int currentYear = DateTime.Now.Year;
             int previousYear = currentYear - 1;
             this.monthComboBox.DataSource = AppCoordinator.RideMonths;
@@ -138,7 +139,7 @@ namespace CycleTracker
             this.yearToDateSummaryControl.SetTitle("Year to Date");
             this.montlySummaryControl.SetTitle("Monthly Summary");
             this.monthToDateSummaryControl.SetTitle("Month to Date");
-
+            this.Cursor = Cursors.Default;
         }
 
         private void yearComboBox_SelectedValueChanged(object sender, EventArgs e)
