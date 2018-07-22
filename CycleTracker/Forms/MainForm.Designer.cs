@@ -317,7 +317,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1311, 42);
             this.panel3.TabIndex = 1;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // bikeComboBox
             // 
@@ -348,7 +347,7 @@
             this.previousYearComboBox.Name = "previousYearComboBox";
             this.previousYearComboBox.Size = new System.Drawing.Size(121, 28);
             this.previousYearComboBox.TabIndex = 6;
-            this.previousYearComboBox.SelectedIndexChanged += new System.EventHandler(this.previousYearComboBox_SelectedIndexChanged);
+            this.previousYearComboBox.SelectedValueChanged += new System.EventHandler(this.previousYearComboBox_SelectedValueChanged);
             // 
             // yearComboBox
             // 
@@ -358,7 +357,7 @@
             this.yearComboBox.Name = "yearComboBox";
             this.yearComboBox.Size = new System.Drawing.Size(99, 28);
             this.yearComboBox.TabIndex = 4;
-            this.yearComboBox.SelectedIndexChanged += new System.EventHandler(this.yearComboBox_SelectedIndexChanged);
+            this.yearComboBox.SelectedValueChanged += new System.EventHandler(this.yearComboBox_SelectedValueChanged);
             // 
             // label15
             // 

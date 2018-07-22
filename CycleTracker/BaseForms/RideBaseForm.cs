@@ -35,8 +35,6 @@ namespace CycleTracker
         private void RideBaseForm_Shown(object sender, EventArgs e)
         {
             Initialise();
-            ClearDataBindings();
-            ApplyDataBindings();
         }
     }
 }

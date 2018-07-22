@@ -35,6 +35,7 @@ namespace CycleTracker
         public MainForm()
         {
             InitializeComponent();
+            AppCoordinator.Initialise();
         }
 
         protected override void ClearDataBindings()
@@ -50,7 +51,7 @@ namespace CycleTracker
             this.monthComboBox.DataBindings.Add(new Binding("Text", AppCoordinator, "SelectedMonth"));
             this.yearComboBox.DataBindings.Add(new Binding("Text", AppCoordinator, "SelectedCurrentYear"));
             this.previousYearComboBox.DataBindings.Add(new Binding("Text", AppCoordinator, "SelectedPreviousYear"));
-            this.bikeComboBox.DataBindings.Add(new Binding("Text", AppCoordinator, "SelectedBike"));
+            this.bikeComboBox.DataBindings.Add(new Binding("SelectedItem", AppCoordinator, "SelectedBike"));
         }
 
         protected override void Initialise()
@@ -65,29 +66,13 @@ namespace CycleTracker
             this.AppCoordinator.SelectedCurrentYear = currentYear;
             this.AppCoordinator.SelectedPreviousYear = (AppCoordinator.RideYears.Contains(previousYear)) ? previousYear : currentYear;
             this.bikeComboBox.DataSource = AppCoordinator.Bikes;
-            this.AppCoordinator.SelectedBike = AppCoordinator.Bikes.Where(b => b.BikeName == "All").Select(b => b.BikeID).Single();
+            this.AppCoordinator.SelectedBike = AppCoordinator.Bikes.Where(b => b.BikeName == "All").Single();
             _initialising = false;
 
-            SetAllDataSources();
-        }
-
-        private void yearComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (_initialising) { return; }
-
-            this.AppCoordinator.SelectedCurrentYear = (int)yearComboBox.SelectedValue;
+            ClearDataBindings();
+            ApplyDataBindings();
 
             SetAllDataSources();
-        }
-
-        private void monthComboBox_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (_initialising) { return; }
-
-            this.AppCoordinator.SelectedMonth = (int)monthComboBox.SelectedIndex + 1;
-
-            SetMonthDataSource();
-            SetMonthToDateDataSource();
         }
 
         private void SetMonthDataSource()
@@ -120,28 +105,6 @@ namespace CycleTracker
                                                                   AppCoordinator.SelectedCurrentYear, AppCoordinator.SelectedPreviousYear);
             yearToDateSummaryControl.SetDataSource(current);
         }
-
-        private void addRideButton_Click(object sender, EventArgs e)
-        {
-            AddRideForm addForm = new AddRideForm();
-            addForm.ShowDialog();
-            AppCoordinator.ResetRideData();
-            SetAllDataSources();
-        }
-
-        private void previousYearComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (_initialising) { return; }
-
-            this.AppCoordinator.SelectedPreviousYear = (int)previousYearComboBox.SelectedValue;
-
-            SetAllDataSources();
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     
         private void SetAllDataSources ()
         {
@@ -167,8 +130,10 @@ namespace CycleTracker
             control.ForeColor = (negative) ? Color.Red : Color.Green;
         }
 
+        #region Event Handlers
+
         private void MainForm_Shown(object sender, EventArgs e)
-        { 
+        {
             this.yearlySummaryControl.SetTitle("Yearly Summary");
             this.yearToDateSummaryControl.SetTitle("Year to Date");
             this.montlySummaryControl.SetTitle("Monthly Summary");
@@ -176,11 +141,45 @@ namespace CycleTracker
 
         }
 
+        private void yearComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (_initialising) { return; }
+
+            this.AppCoordinator.SelectedCurrentYear = Convert.ToInt32(yearComboBox.SelectedItem);
+
+            SetAllDataSources();
+        }
+
+        private void previousYearComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (_initialising) { return; }
+
+            this.AppCoordinator.SelectedPreviousYear = Convert.ToInt32(previousYearComboBox.SelectedItem);
+
+            SetAllDataSources();
+        }
+
+        private void monthComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (_initialising) { return; }
+
+            SetMonthDataSource();
+            SetMonthToDateDataSource();
+        }
+
         private void bikeComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
             if (_initialising) { return; }
 
-            AppCoordinator.SelectedBike = Convert.ToInt32(bikeComboBox.SelectedValue);
+            AppCoordinator.SelectedBike = bikeComboBox.SelectedItem as FilteredBike;
+            AppCoordinator.ResetRideData();
+            SetAllDataSources();
+        }
+
+        private void addRideButton_Click(object sender, EventArgs e)
+        {
+            AddRideForm addForm = new AddRideForm();
+            addForm.ShowDialog();
             AppCoordinator.ResetRideData();
             SetAllDataSources();
         }
@@ -199,5 +198,7 @@ namespace CycleTracker
             AppCoordinator.ResetRideData();
             SetAllDataSources();
         }
+
+        #endregion
     }
 }

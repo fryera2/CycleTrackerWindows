@@ -20,7 +20,7 @@ namespace CycleTracker.Database
                 {
 #if DEBUG
                     _entities = new CycleDBEntities();
-                    string connection = _entities.Database.Connection.ConnectionString.Replace ("CycleDB", "CycleDB_new");
+                    string connection = _entities.Database.Connection.ConnectionString.Replace("CycleDB", "CycleDB_new");
                     _entities.Database.Connection.ConnectionString = connection;
 #else
                     _entities = new CycleDBEntities();
@@ -64,7 +64,7 @@ namespace CycleTracker.Database
             {
                 if (_ridePreviousYears == null)
                 {
-                    _ridePreviousYears = RideYears;
+                    _ridePreviousYears = Entities.RideYears.Select(y => y.YearID).ToList(); ;
                 }
                 return _ridePreviousYears;
             }
@@ -129,7 +129,7 @@ namespace CycleTracker.Database
         {
             List<FilteredRide> rides = (from r in Entities.Rides
                                         where (r.RideDate.Value.Year == year || r.RideDate.Value.Year == previousYear) &&
-                                        (selectedBike != 10000) ? r.BikeID == selectedBike : true
+                                        (selectedBike != 0) ? r.BikeID == selectedBike : true
                                         select new FilteredRide
                                         {
                                             RideID = r.RideID,
@@ -224,6 +224,13 @@ namespace CycleTracker.Database
                 return 0;
             }
         }
+    }
+
+    public class FilteredBike
+    {
+        public int BikeID { get; set; }
+
+        public string BikeName { get; set; }
     }
 
 }

@@ -71,16 +71,20 @@ namespace CycleTracker.BusinessObjects
             }
         }
 
-        public int SelectedBike { get; set; }
+        public FilteredBike SelectedBike { get; set; }
 
-        private List<Bike> _bikes = null;
-        public List<Bike> Bikes
+        private List<FilteredBike> _bikes = null;
+        public List<FilteredBike> Bikes
         {
             get
             {
                 if (_bikes == null)
                 {
-                    _bikes =  DatabaseCoordinator.BikeList;
+                    _bikes =  DatabaseCoordinator.BikeList.Select(b => new FilteredBike
+                    {
+                        BikeID = b.BikeID,
+                        BikeName = b.BikeName
+                    }).OrderBy(b => b.BikeName).ToList();
                 }
                 return _bikes;
             }
@@ -93,7 +97,7 @@ namespace CycleTracker.BusinessObjects
             {
                 if (_filteredRides == null)
                 {
-                    _filteredRides = DatabaseCoordinator.GetFilteredRidesForYears(SelectedCurrentYear, SelectedPreviousYear, SelectedBike);
+                    _filteredRides = DatabaseCoordinator.GetFilteredRidesForYears(SelectedCurrentYear, SelectedPreviousYear, SelectedBike.BikeID);
 
                 }
                 return _filteredRides;
@@ -102,6 +106,11 @@ namespace CycleTracker.BusinessObjects
             {
                 _filteredRides = value;
             }
+        }
+
+        public void Initialise()
+        {
+           var dummy = DatabaseCoordinator.BikeList;
         }
 
         public void ResetRideData ()
