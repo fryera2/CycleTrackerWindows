@@ -68,6 +68,9 @@ namespace CycleTracker
             this.AppCoordinator.SelectedMonth = AppCoordinator.RideMonths.Where(m => m.MonthId == DateTime.Now.Month).Single();
             this.bikeComboBox.DataSource = AppCoordinator.Bikes;
             this.AppCoordinator.SelectedBike = AppCoordinator.Bikes.Where(b => b.BikeName == "All").Single();
+            DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
+            Calendar cal = dfi.Calendar;
+            this.weekLabel.Text = string.Format("Week {0}", cal.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstDay, DayOfWeek.Monday));
             _initialising = false;
 
             ClearDataBindings();

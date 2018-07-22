@@ -51,6 +51,7 @@
             this.yearToDateSummaryControl = new CycleTracker.Controls.StatisticsControl();
             this.yearlySummaryControl = new CycleTracker.Controls.StatisticsControl();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.weekLabel = new System.Windows.Forms.Label();
             this.bikeComboBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.previousYearComboBox = new System.Windows.Forms.ComboBox();
@@ -308,6 +309,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.LightGray;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.weekLabel);
             this.panel3.Controls.Add(this.bikeComboBox);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.previousYearComboBox);
@@ -319,6 +321,20 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1311, 42);
             this.panel3.TabIndex = 1;
+            // 
+            // weekLabel
+            // 
+            this.weekLabel.AutoSize = true;
+            this.weekLabel.BackColor = System.Drawing.Color.LightGray;
+            this.weekLabel.Cursor = System.Windows.Forms.Cursors.No;
+            this.weekLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.weekLabel.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.weekLabel.Location = new System.Drawing.Point(1107, 6);
+            this.weekLabel.Name = "weekLabel";
+            this.weekLabel.Size = new System.Drawing.Size(86, 25);
+            this.weekLabel.TabIndex = 9;
+            this.weekLabel.Text = "Week 1";
+            this.weekLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // bikeComboBox
             // 
@@ -502,6 +518,7 @@
         private System.Windows.Forms.ComboBox bikeComboBox;
         private System.Windows.Forms.ToolStripButton addRideButton;
         private System.Windows.Forms.ToolStripButton editItemButton;
+        private System.Windows.Forms.Label weekLabel;
     }
 }
 
